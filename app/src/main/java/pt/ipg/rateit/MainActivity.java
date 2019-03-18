@@ -41,16 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-    private Button buttonAddFilme;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonAddSerie = (Button)findViewById(R.id.buttonAddSerie);
-        Button buttonAddFilme = (Button)findViewById(R.id.buttonAddFilme);
+        Button buttonAddSerie = findViewById(R.id.buttonAddSerie);
+        Button buttonAddFilme = findViewById(R.id.buttonAddFilme);
 
         buttonAddFilme.setOnClickListener(new View.OnClickListener() {
             @Override
