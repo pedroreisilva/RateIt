@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         buttonAddFilme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intentf = new Intent(MainActivity.this, AddFilme.class);
                 startActivity(intentf);
 
@@ -62,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         buttonAddSerie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intents = new Intent(MainActivity.this, AddSerie.class);
                 startActivity(intents);
 
