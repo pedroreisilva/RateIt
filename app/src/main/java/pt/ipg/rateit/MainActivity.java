@@ -2,16 +2,13 @@ package pt.ipg.rateit;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.Toast;
-import java.net.Inet4Address;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonAddSerie = findViewById(R.id.buttonAddSerie);
-        Button buttonAddFilme = findViewById(R.id.buttonAddFilme);
+        Button buttonAddSerie = findViewById(R.id.buttonSeries);
+        Button buttonAddFilme = findViewById(R.id.buttonFilmes);
 
         buttonAddFilme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentf = new Intent(MainActivity.this, AddFilme.class);
+                Intent intentf = new Intent(MainActivity.this, Filmes.class);
                 startActivity(intentf);
 
             }
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddSerie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intents = new Intent(MainActivity.this, AddSerie.class);
+                Intent intents = new Intent(MainActivity.this, Series.class);
                 startActivity(intents);
 
             }
