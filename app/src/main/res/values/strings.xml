@@ -1,6 +1,26 @@
 <resources>
     <string name="app_name">RateIt</string>
     <string name="action_settings">Settings</string>
-    <string name="atividade_series">Series</string>
+    <string name="atividade_series">Séries</string>
     <string name="atividade_filmes">Filmes</string>
+    <string name="adicionar_filme">Adicionar Filme</string>
+    <string name="editar_filmes">Editar Filmes</string>
+    <string name="apagar_filme">Apagar Filme</string>
+    <string name="apagar_serie">Apagar Série</string>
+    <string name="editar_serie">Editar Série</string>
+    <string name="adicionar_serie">Adicionar Série</string>
+    <string name="addfilme">Inserir Filme</string>
+    <string name="addserie">Inserir Série</string>
+    <string name="delfilme">Apagar Filme</string>
+    <string name="savefilme">Guardar Filme</string>
+    <string name="delserie">Apagar Série</string>
+    <string name="saveserie">Guardar Série</string>
+    <string name="cancel">Cancelar</string>
+    <string name="nome_obrigatoria">Digite um nome váildo!</string>
+    <string name="serie_atualizada">Série Atualizada</string>
+    <string name="serie_adicionada">Série Adicionada</string>
+    <string name="filme_atualizado">Filme Atualizado</string>
+    <string name="filme_adicionado">Filme Adicionado</string>
+    <string name="ver_filmes">Ver Filmes</string>
+    <string name="ver_series">Ver Séries</string>
 </resources>
