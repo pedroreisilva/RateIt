@@ -41,27 +41,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonAddSerie = findViewById(R.id.buttonSeries);
-        Button buttonAddFilme = findViewById(R.id.buttonFilmes);
+        Button buttonSeries = findViewById(R.id.buttonSeries);
+        Button buttonFilmes = findViewById(R.id.buttonFilmes);
 
-        buttonAddFilme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentf = new Intent(MainActivity.this, Filmes.class);
-                startActivity(intentf);
+                buttonFilmes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intentfilmes = new Intent(MainActivity.this, Filmes.class);
+                            startActivity(intentfilmes);
 
-            }
-        });
+                        }
+                    }
+                    );
 
-        buttonAddSerie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intents = new Intent(MainActivity.this, Series.class);
-                startActivity(intents);
+                    buttonSeries.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intentseries = new Intent(MainActivity.this, Series.class);
+                            startActivity(intentseries);
 
-            }
-        });
+
+                        }
+                    }
+                    );
 
     }
-
 }
