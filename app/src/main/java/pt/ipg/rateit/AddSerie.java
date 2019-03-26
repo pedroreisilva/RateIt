@@ -3,11 +3,14 @@ package pt.ipg.rateit;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class AddSerie extends AppCompatActivity {
+public class AddSerie extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +18,6 @@ public class AddSerie extends AppCompatActivity {
         setContentView(R.layout.activity_add_serie);
 
         Button buttonCancel = findViewById(R.id.buttonCancel);
-
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,7 +26,6 @@ public class AddSerie extends AppCompatActivity {
         });
 
         Button buttonInsSerie = findViewById(R.id.buttonInsSerie);
-
         buttonInsSerie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,5 +43,23 @@ public class AddSerie extends AppCompatActivity {
             }
 
         });
+
+
+        Spinner spinnercat = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnercat.setAdapter(adapter);
+        spinnercat.setOnItemSelectedListener(this);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

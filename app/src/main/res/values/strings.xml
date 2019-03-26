@@ -26,4 +26,15 @@
     <string name="ver_series">Ver Séries</string>
     <string name="nome_filme">Nome do Filme</string>
     <string name="nome_serie">Nome da Série</string>
+    
+    <string-array name="categorias">
+        <item>Ação</item>
+        <item>Aventura</item>
+        <item>Biográfico</item>
+        <item>Comédia</item>
+        <item>Drama</item>
+        <item>Ficção</item>
+        <item>Romance</item>
+        <item>Terror</item>
+    </string-array>
 </resources>
