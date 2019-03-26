@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RateIt</string>
+    <string name="action_settings">Configurações</string>
+    <string name="atividade_series">Series</string>
+    <string name="atividade_filmes">Movies</string>
+    <string name="adicionar_filme">Add Movie</string>
+    <string name="editar_filmes">Edit Movie</string>
+    <string name="apagar_filme">Delete Movie</string>
+    <string name="apagar_serie">Delete Serie</string>
+    <string name="editar_serie">Edit Serie</string>
+    <string name="adicionar_serie">Add Serie</string>
+    <string name="addfilme">Insert Movie</string>
+    <string name="addserie">Insert Serie</string>
+    <string name="delfilme">Delete Movie</string>
+    <string name="savefilme">Save Movie</string>
+    <string name="delserie">Delete Serie</string>
+    <string name="saveserie">Save Serie</string>
+    <string name="cancel">Cancel</string>
+    <string name="nome_obrigatoria">Field empty!</string>
+    <string name="characters">You can\'t type special characters</string>
+    <string name="serie_atualizada">Serie updated</string>
+    <string name="serie_adicionada">Serie added</string>
+    <string name="filme_atualizado">Movie updated</string>
+    <string name="filme_adicionado">Movie added</string>
+    <string name="ver_filmes">Watch movies</string>
+    <string name="ver_series">Watch series</string>
+    <string name="nome_filme">Movie Name</string>
+    <string name="nome_serie">Serie Name</string>
+</resources>
