@@ -39,10 +39,10 @@
         android:layout_marginRight="8dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/nome_filme"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Nome do Filme" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

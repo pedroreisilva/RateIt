@@ -34,6 +34,8 @@ public class AddFilme extends AppCompatActivity {
 
                 if (mensagem.trim().length() == 0) {
                     editTextFilmeName.setError(getString(R.string.nome_obrigatoria));
+                }else if (!mensagem.matches("[a-zA-Z ]+")){
+                    editTextFilmeName.setError(getString(R.string.characters));
                 }else{
                     finish();
                     Toast.makeText(AddFilme.this,getString(R.string.filme_adicionado),Toast.LENGTH_SHORT).show();

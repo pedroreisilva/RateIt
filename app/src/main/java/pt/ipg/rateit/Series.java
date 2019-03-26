@@ -26,7 +26,7 @@ public class Series extends AppCompatActivity {
                 buttonAddSerie.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intentaddserie = new Intent(v.getContext(), AddFilme.class);
+                        Intent intentaddserie = new Intent(v.getContext(), AddSerie.class);
                         startActivity(intentaddserie);
                     }
                 });
@@ -34,7 +34,7 @@ public class Series extends AppCompatActivity {
                 buttonEditSerie.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intenteditserie = new Intent(v.getContext(), EditFilme.class);
+                        Intent intenteditserie = new Intent(v.getContext(), EditSerie.class);
                         startActivity(intenteditserie);
                     }
                 });
@@ -42,7 +42,7 @@ public class Series extends AppCompatActivity {
                 buttonDelSerie.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intentdelserie = new Intent(v.getContext(), DelFilme.class);
+                        Intent intentdelserie = new Intent(v.getContext(), DelSerie.class);
                         startActivity(intentdelserie);
                     }
                 });

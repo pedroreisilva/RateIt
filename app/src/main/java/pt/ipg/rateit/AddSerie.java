@@ -33,11 +33,14 @@ public class AddSerie extends AppCompatActivity {
 
                 if (mensagem.trim().length() == 0) {
                     editTextSerieName.setError(getString(R.string.nome_obrigatoria));
+                }else if (!mensagem.matches("[a-zA-Z ]+")){
+                    editTextSerieName.setError(getString(R.string.characters));
                 }else{
                     finish();
                     Toast.makeText(AddSerie.this,getString(R.string.serie_adicionada),Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
     }
 }

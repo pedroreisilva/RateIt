@@ -16,11 +16,14 @@
     <string name="delserie">Apagar Série</string>
     <string name="saveserie">Guardar Série</string>
     <string name="cancel">Cancelar</string>
-    <string name="nome_obrigatoria">Digite um nome váildo!</string>
+    <string name="nome_obrigatoria">Nenhum nome introduzido!</string>
+    <string name="characters">Não é possível introduzir caracteres especiais!</string>
     <string name="serie_atualizada">Série Atualizada</string>
     <string name="serie_adicionada">Série Adicionada</string>
     <string name="filme_atualizado">Filme Atualizado</string>
     <string name="filme_adicionado">Filme Adicionado</string>
     <string name="ver_filmes">Ver Filmes</string>
     <string name="ver_series">Ver Séries</string>
+    <string name="nome_filme">Nome do Filme</string>
+    <string name="nome_serie">Nome da Série</string>
 </resources>

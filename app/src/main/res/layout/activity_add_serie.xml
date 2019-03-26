@@ -17,11 +17,11 @@
         android:layout_marginRight="8dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/nome_serie"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Nome do Série" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonInsSerie"
