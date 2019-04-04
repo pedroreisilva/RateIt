@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class DelSerie extends AppCompatActivity {
 
@@ -22,5 +23,15 @@ public class DelSerie extends AppCompatActivity {
             }
         });
 
+        Button buttonDelSerie = findViewById(R.id.buttonDelSerie);
+        buttonDelSerie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
+                Toast.makeText(DelSerie.this,getString(R.string.serie_eliminado),Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }
