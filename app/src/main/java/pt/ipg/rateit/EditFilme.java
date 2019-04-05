@@ -41,7 +41,7 @@ public class EditFilme extends AppCompatActivity implements AdapterView.OnItemSe
         buttonSaveFilme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText editTextSerieName = findViewById(R.id.editTextNomeSerie);
+                EditText editTextSerieName = findViewById(R.id.editTextNomeFilme);
                 String mensagem = editTextSerieName.getText().toString();
 
                 if (mensagem.trim().length() == 0) {
