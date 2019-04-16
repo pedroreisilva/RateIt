@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 buttonFilmes.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intentfilmes = new Intent(MainActivity.this, Filmes.class);
+                            Intent intentfilmes = new Intent(MainActivity.this, MainFilmes.class);
                             startActivity(intentfilmes);
 
                         }
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     buttonSeries.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intentseries = new Intent(MainActivity.this, Series.class);
+                            Intent intentseries = new Intent(MainActivity.this, MainSeries.class);
                             startActivity(intentseries);
 
 

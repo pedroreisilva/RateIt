@@ -29,6 +29,8 @@
     <string name="nome_filme">Nome do Filme</string>
     <string name="nome_serie">Nome da Série</string>
     <string name="data_de_visualização">Data de Visualização</string>
+    <string name="errospinner">Selecione um item</string>
+
 
     <string-array name="categorias">
         <item>Ação</item>
