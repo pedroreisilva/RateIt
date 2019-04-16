@@ -1,58 +1,41 @@
 package pt.ipg.rateit;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class Filmes {
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-import static pt.ipg.rateit.DefinicoesApp.atividade_filmes;
+    private int id;
+    private String nome;
+    private String nota;
+    private int idCategory;
 
-public class Filmes extends AppCompatActivity {
+    public int getId() {
+        return id;
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filmes);
+    public void setId(int id) {
+        this.id = id;
+    }
 
-        Toast.makeText(Filmes.this,atividade_filmes,Toast.LENGTH_SHORT).show();
+    public String getNome() {
+        return nome;
+    }
 
-        Button buttonAddFilme = findViewById(R.id.buttonAddFilme);
-        Button buttonEditFilme = findViewById(R.id.buttonEditFilme);
-        Button buttonDelFilme = findViewById(R.id.buttonDelFilme);
-        Button buttonListaFilmes = findViewById(R.id.buttonListaFilmes);
+    public void getNome(String title) {
+        this.nome = title;
+    }
 
-                buttonAddFilme.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentaddfilme = new Intent(v.getContext(), AddFilme.class);
-                        startActivity(intentaddfilme);
-                    }
-                });
+    public String getNota() {
+        return nota;
+    }
 
-                buttonEditFilme.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intenteditfilme = new Intent(v.getContext(), EditFilme.class);
-                        startActivity(intenteditfilme);
-                    }
-                });
+    public void getNota(String price) {
+        this.nota = price;
+    }
 
-                buttonDelFilme.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentdelfilme = new Intent(v.getContext(), DelFilme.class);
-                        startActivity(intentdelfilme);
-                    }
-                });
+    public int getIdCategory() {
+        return idCategory;
+    }
 
-                buttonListaFilmes.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentlistafilmes = new Intent(v.getContext(), ListaFilmes.class);
-                        startActivity(intentlistafilmes);
-                    }
-                });
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
     }
 }

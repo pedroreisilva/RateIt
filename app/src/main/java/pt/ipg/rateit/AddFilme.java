@@ -23,6 +23,8 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
     Calendar c;
     DatePickerDialog dpd;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,28 +49,26 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
                 }else{
                     finish();
                     Toast.makeText(AddFilme.this,getString(R.string.filme_adicionado),Toast.LENGTH_SHORT).show();
-                    }
                 }
-
-
+            }
 
         });
 
-        Spinner spinnercat = findViewById(R.id.spinnercat);
+        Spinner SpinnerCat = findViewById(R.id.spinnercat);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnercat.setAdapter(adapter);
-        spinnercat.setOnItemSelectedListener(this);
+        SpinnerCat.setAdapter(adapter);
+        SpinnerCat.setOnItemSelectedListener(this);
 
-        Spinner spinnernota = findViewById(R.id.spinnernotas);
+        Spinner SpinnerNota = findViewById(R.id.spinnernotas);
         ArrayAdapter<CharSequence> adapters = ArrayAdapter.createFromResource(this, R.array.notas, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnernota.setAdapter(adapters);
-        spinnernota.setOnItemSelectedListener(this);
+        SpinnerNota.setAdapter(adapters);
+        SpinnerNota.setOnItemSelectedListener(this);
 
 
-        mTextView = (TextView) findViewById(R.id.textViewData);
-        mButton = (Button) findViewById(R.id.buttonData);
+        mTextView = findViewById(R.id.textViewData);
+        mButton = findViewById(R.id.buttonData);
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,5 +99,4 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 }
