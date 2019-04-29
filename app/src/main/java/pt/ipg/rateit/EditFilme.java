@@ -46,8 +46,6 @@ public class EditFilme extends AppCompatActivity implements AdapterView.OnItemSe
 
                 if (mensagem.trim().length() == 0) {
                     editTextSerieName.setError(getString(R.string.nome_obrigatoria));
-                }else if (!mensagem.matches("[a-zA-Z ]+")){
-                    editTextSerieName.setError(getString(R.string.characters));
                 }else {
                     finish();
                     Toast.makeText(EditFilme.this, getString(R.string.filme_atualizado), Toast.LENGTH_SHORT).show();
