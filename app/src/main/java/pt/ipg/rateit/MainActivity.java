@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonSeries = findViewById(R.id.buttonSeries);
         Button buttonFilmes = findViewById(R.id.buttonFilmes);
+        Button buttonCategorias = findViewById(R.id.buttonCategorias);
 
                 buttonFilmes.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -54,16 +55,23 @@ public class MainActivity extends AppCompatActivity {
                     }
                     );
 
-                    buttonSeries.setOnClickListener(new View.OnClickListener() {
+                buttonSeries.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intentseries = new Intent(MainActivity.this, MainSeries.class);
                             startActivity(intentseries);
-
-
                         }
                     }
                     );
+
+                buttonCategorias.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intentcategorias = new Intent(MainActivity.this, MainCategorias.class);
+                            startActivity(intentcategorias);
+                                            }
+                                        }
+        );
 
     }
 }

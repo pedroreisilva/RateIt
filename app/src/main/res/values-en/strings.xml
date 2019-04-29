@@ -27,4 +27,20 @@
     <string name="ver_series">Watch series</string>
     <string name="nome_filme">Movie Name</string>
     <string name="nome_serie">Serie Name</string>
+    <string name="filme_eliminado">Movie deleted successfully!</string>
+    <string name="serie_eliminado">Serie deleted successfully!</string>
+    <string name="data_de_visualização">View Date</string>
+    <string name="errospinner">Select an item</string>
+    <string name="addcategoria">Insert Category</string>
+    <string name="delcategoria">Delete Category</string>
+    <string name="savecategoria">Save Category</string>
+    <string name="categoria_atualizado">Category updated successfully!</string>
+    <string name="categoria_adicionado">Category Added</string>
+    <string name="nome_categoria">Category Name</string>
+    <string name="atividade_categorias">Categories</string>
+    <string name="adicionar_categoria">Add Category</string>
+    <string name="editar_categorias">Edit Categories</string>
+    <string name="apagar_categoria">Delete Category</string>
+    <string name="ver_categorias">Watch Categories</string>
+    <string name="categoria_eliminado">Category deleted successfully!</string>
 </resources>
