@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListaSeries"></activity>
+        <activity android:name=".ListaCategorias"></activity>
+        <activity android:name=".MainCategorias" />
+        <activity android:name=".DelCategoria" />
+        <activity android:name=".EditCategoria" />
+        <activity android:name=".AddCategoria" />
+        <activity android:name=".ListaSeries" />
         <activity android:name=".ListaFilmes" />
         <activity android:name=".DelSerie" />
         <activity android:name=".EditSerie" />
