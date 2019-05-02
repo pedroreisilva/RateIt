@@ -4,7 +4,7 @@ public class Filmes {
 
     private int id;
     private String nome;
-    private String nota;
+    private int nota;
     private int idCategory;
 
     public int getId() {
@@ -23,12 +23,12 @@ public class Filmes {
         this.nome = title;
     }
 
-    public String getNota() {
+    public int getNota() {
         return nota;
     }
 
-    public void getNota(String price) {
-        this.nota = price;
+    public void getNota(int nota) {
+        this.nota = nota;
     }
 
     public int getIdCategory() {
