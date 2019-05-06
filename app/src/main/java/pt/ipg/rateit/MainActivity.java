@@ -35,43 +35,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        Button buttonSeries = findViewById(R.id.buttonSeries);
-        Button buttonFilmes = findViewById(R.id.buttonFilmes);
-        Button buttonCategorias = findViewById(R.id.buttonCategorias);
+    public void FilmesActivity(View view) {
 
-                buttonFilmes.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intentfilmes = new Intent(MainActivity.this, MainFilmes.class);
-                            startActivity(intentfilmes);
+        Intent intent = new Intent(this, MainFilmes.class);
 
-                        }
-                    }
-                    );
+        startActivity(intent);
+    }
 
-                buttonSeries.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intentseries = new Intent(MainActivity.this, MainSeries.class);
-                            startActivity(intentseries);
-                        }
-                    }
-                    );
+    public void SeriesActivity(View view) {
+        Intent intent = new Intent(this, MainSeries.class);
 
-                buttonCategorias.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intentcategorias = new Intent(MainActivity.this, MainCategorias.class);
-                            startActivity(intentcategorias);
-                                            }
-                                        }
-        );
+        startActivity(intent);
+    }
 
+    public void CategoriasActivity(View view) {
+        Intent intent = new Intent(this, MainCategorias.class);
+
+        startActivity(intent);
     }
 }
+

@@ -17,43 +17,29 @@ public class MainSeries extends AppCompatActivity {
         setContentView(R.layout.activity_series);
 
         Toast.makeText(MainSeries.this,atividade_series,Toast.LENGTH_SHORT).show();
+    }
 
-        Button buttonAddSerie = findViewById(R.id.buttonAddSerie);
-        Button buttonEditSerie = findViewById(R.id.buttonEditSerie);
-        Button buttonDelSerie = findViewById(R.id.buttonDelSerie);
-        Button buttonListaSeries = findViewById(R.id.buttonListaSeries);
+    public void AddSerieActivity(View view) {
+        Intent intent = new Intent(this, AddSerie.class);
 
-                buttonAddSerie.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentaddserie = new Intent(v.getContext(), AddSerie.class);
-                        startActivity(intentaddserie);
-                    }
-                });
+        startActivity(intent);
+    }
 
-                buttonEditSerie.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intenteditserie = new Intent(v.getContext(), EditSerie.class);
-                        startActivity(intenteditserie);
-                    }
-                });
+    public void EditSerieActivity(View view) {
+        Intent intent = new Intent(this, EditSerie.class);
 
-                buttonDelSerie.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentdelserie = new Intent(v.getContext(), DelSerie.class);
-                        startActivity(intentdelserie);
-                    }
-                });
+        startActivity(intent);
+    }
 
-                buttonListaSeries.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intentlistaseries = new Intent(v.getContext(), ListaSeries.class);
-                        startActivity(intentlistaseries);
-                    }
-                });
+    public void DelSerieActivity(View view) {
+        Intent intent = new Intent(this, DelSerie.class);
 
+        startActivity(intent);
+    }
+
+    public void ListaSerieActivity(View view) {
+        Intent intent = new Intent(this, ListaSeries.class);
+
+        startActivity(intent);
     }
 }

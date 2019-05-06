@@ -17,6 +17,7 @@
     <string name="delserie">Delete Serie</string>
     <string name="saveserie">Save Serie</string>
     <string name="cancel">Cancel</string>
+    <string name="finish">Canceled</string>
     <string name="nome_obrigatoria">Field empty!</string>
     <string name="characters">You can\'t type special characters</string>
     <string name="serie_atualizada">Serie updated</string>

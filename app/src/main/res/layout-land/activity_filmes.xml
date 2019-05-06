@@ -16,6 +16,7 @@
         android:layout_marginEnd="135dp"
         android:layout_marginRight="135dp"
         android:text="@string/adicionar_filme"
+        android:onClick="AddFilmeActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +32,7 @@
         android:layout_marginEnd="144dp"
         android:layout_marginRight="144dp"
         android:text="@string/editar_filmes"
+        android:onClick="EditFilmeActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddFilme" />
@@ -45,6 +47,7 @@
         android:layout_marginEnd="144dp"
         android:layout_marginRight="144dp"
         android:text="@string/apagar_filme"
+        android:onClick="DelFilmeActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +63,7 @@
         android:layout_marginEnd="155dp"
         android:layout_marginRight="155dp"
         android:text="@string/ver_filmes"
+        android:onClick="ListaFilmeActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonDelFilme" />

@@ -16,42 +16,30 @@ public class MainCategorias extends AppCompatActivity {
         setContentView(R.layout.activity_categorias);
 
         Toast.makeText(MainCategorias.this,atividade_categorias,Toast.LENGTH_SHORT).show();
-
-        Button buttonAddCategoria = findViewById(R.id.buttonAddCategoria);
-        Button buttonEditCategoria = findViewById(R.id.buttonEditCategoria);
-        Button buttonDelCategoria = findViewById(R.id.buttonDelCategoria);
-        Button buttonListaCategorias = findViewById(R.id.buttonListaCategorias);
-
-        buttonAddCategoria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentaddcategoria = new Intent(v.getContext(), AddCategoria.class);
-                startActivity(intentaddcategoria);
-            }
-        });
-
-        buttonEditCategoria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intenteditcategoria = new Intent(v.getContext(), EditCategoria.class);
-                startActivity(intenteditcategoria);
-            }
-        });
-
-        buttonDelCategoria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentdelcategoria = new Intent(v.getContext(), DelCategoria.class);
-                startActivity(intentdelcategoria);
-            }
-        });
-
-        buttonListaCategorias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentlistacategorias = new Intent(v.getContext(), ListaCategorias.class);
-                startActivity(intentlistacategorias);
-            }
-        });
     }
+
+    public void AddCategoriaActivity(View view) {
+        Intent intent = new Intent(this, AddCategoria.class);
+
+        startActivity(intent);
+    }
+
+    public void EditCategoriaActivity(View view) {
+        Intent intent = new Intent(this, EditCategoria.class);
+
+        startActivity(intent);
+    }
+
+    public void DelCategoriaActivity(View view) {
+        Intent intent = new Intent(this, DelCategoria.class);
+
+        startActivity(intent);
+    }
+
+    public void ListaCategoriaActivity(View view) {
+        Intent intent = new Intent(this, ListaCategorias.class);
+
+        startActivity(intent);
+    }
+
 }
