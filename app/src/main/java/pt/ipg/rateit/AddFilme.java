@@ -18,12 +18,6 @@ import java.util.Calendar;
 
 public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    TextView mTextView;
-    Button mButton;
-    Calendar c;
-    DatePickerDialog dpd;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +70,13 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
+    TextView mTextView;
+    Button mButton;
+    Calendar c;
+    DatePickerDialog dpd;
+
 
     public void validarCampos(){
         EditText editTextFilmeName = findViewById(R.id.editTextNomeFilme);
