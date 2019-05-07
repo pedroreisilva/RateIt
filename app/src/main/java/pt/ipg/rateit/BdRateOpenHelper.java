@@ -20,8 +20,8 @@ public class BdRateOpenHelper extends SQLiteOpenHelper {
      * @param context to use for locating paths to the the database
      */
 
-    public BdRateOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public BdRateOpenHelper(@Nullable Context context) {
+        super(context, NOME_BASE_DADOS, null, VERSAO_BASE_DADOS);
     }
 
     /**
