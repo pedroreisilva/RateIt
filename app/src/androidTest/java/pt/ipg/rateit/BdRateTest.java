@@ -57,7 +57,7 @@ public class BdRateTest {
 
         //TESTE SÉRIES
 
-        BdTableFilmes tableSeries = new BdTableFilmes(db);
+        BdTableSeries tableSeries = new BdTableSeries(db);
 
         Series series = new Series();
         series.setNome("The 100");
