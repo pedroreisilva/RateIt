@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 public class Categorias {
     private long id;
-    private String categoria;
+    private String genero;
 
     public long getId() {
         return id;
@@ -16,17 +16,17 @@ public class Categorias {
     }
 
     public String getCategoria() {
-        return categoria;
+        return genero;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategoria(int genero) {
+        this.genero = genero;
     }
 
     public ContentValues getContentValues() {
         ContentValues valores = new ContentValues();
 
-        valores.put(BdTableCategorias.CAMPO_CATEGORIA, categoria);
+        valores.put(BdTableCategorias.CAMPO_CATEGORIA, genero);
 
         return valores;
     }
@@ -36,14 +36,14 @@ public class Categorias {
                 cursor.getColumnIndex(BdTableCategorias._ID)
         );
 
-        String categoria = cursor.getString(
+        String genero = cursor.getString(
                 cursor.getColumnIndex(BdTableCategorias.CAMPO_CATEGORIA)
         );
 
         Categorias categorias = new Categorias();
 
         categorias.setId(id);
-        categorias.setCategoria(categoria);
+        categorias.setCategoria(genero);
 
         return categorias;
     }

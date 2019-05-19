@@ -8,6 +8,7 @@ import android.provider.BaseColumns;
 public class BdTableCategorias implements BaseColumns {
     public static final String NOME_TABELA = "Categorias";
     public static final String CAMPO_CATEGORIA = "Nome";
+    public static final String[] TODAS_COLUNAS = new String[] { _ID, CAMPO_CATEGORIA};
 
     private SQLiteDatabase db;
 

@@ -11,6 +11,8 @@ public class BdTableFilmes implements BaseColumns {
     public static final String CAMPO_CATEGORIA = "Categoria";
     public static final String CAMPO_NOTA = "Nota";
     public static final String CAMPO_DATA_VISUALIZACAO = "Data";
+    public static final String[] TODAS_COLUNAS = new String[] { _ID, CAMPO_NOME, CAMPO_CATEGORIA, CAMPO_NOTA, CAMPO_DATA_VISUALIZACAO};
+
     private final SQLiteDatabase db;
 
     public BdTableFilmes(SQLiteDatabase db) {
@@ -22,9 +24,9 @@ public class BdTableFilmes implements BaseColumns {
                 "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         CAMPO_NOME + " TEXT NOT NULL," +
-                        CAMPO_CATEGORIA + " TEXT NOT NULL," +
+                        CAMPO_CATEGORIA + " INTEGER NOT NULL," +
                         CAMPO_NOTA + " INTEGER NOT NULL," +
-                        CAMPO_DATA_VISUALIZACAO + " DATE NOT NULL," +
+                        CAMPO_DATA_VISUALIZACAO + " TEXT NOT NULL," +
                         "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategorias.NOME_TABELA + "(" + BdTableCategorias._ID + ")" +
                         ")"
         );

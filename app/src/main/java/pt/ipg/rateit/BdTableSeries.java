@@ -14,6 +14,7 @@ public class BdTableSeries implements BaseColumns {
     public static final String CAMPO_TEMPORADA = "Temporada";
     public static final String CAMPO_EPISODIO = "Episódio";
     public static final String CAMPO_DATA_VISUALIZACAO = "Data";
+    public static final String[] TODAS_COLUNAS = new String[] { _ID, CAMPO_NOME, CAMPO_CATEGORIA, CAMPO_NOTA, CAMPO_TEMPORADA, CAMPO_EPISODIO, CAMPO_DATA_VISUALIZACAO};
     private final SQLiteDatabase db;
 
     public BdTableSeries(SQLiteDatabase db) {
