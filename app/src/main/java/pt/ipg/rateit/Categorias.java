@@ -19,7 +19,7 @@ public class Categorias {
         return genero;
     }
 
-    public void setCategoria(int genero) {
+    public void setCategoria(String genero) {
         this.genero = genero;
     }
 
