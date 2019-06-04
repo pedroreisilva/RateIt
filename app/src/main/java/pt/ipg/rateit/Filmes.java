@@ -6,7 +6,7 @@ import android.database.Cursor;
 public class Filmes {
 
     private long id;
-    private String nome;
+    private String nomef;
     private int nota;
     private String data;
     private long category;
@@ -20,11 +20,11 @@ public class Filmes {
     }
 
     public String getNome() {
-        return nome;
+        return nomef;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nomef) {
+        this.nomef = nomef;
     }
 
     public int getNota() {
@@ -55,7 +55,7 @@ public class Filmes {
 
         ContentValues valores = new ContentValues();
 
-        valores.put(BdTableFilmes.CAMPO_NOME, nome);
+        valores.put(BdTableFilmes.CAMPO_NOME, nomef);
         valores.put(BdTableFilmes.CAMPO_CATEGORIA, category);
         valores.put(BdTableFilmes.CAMPO_NOTA, nota);
         valores.put(BdTableFilmes.CAMPO_DATA_VISUALIZACAO, data);
@@ -68,7 +68,7 @@ public class Filmes {
                 cursor.getColumnIndex(BdTableFilmes._ID)
         );
 
-        String nome = cursor.getString(
+        String nomef = cursor.getString(
                 cursor.getColumnIndex(BdTableFilmes.CAMPO_NOME)
         );
 
@@ -87,7 +87,7 @@ public class Filmes {
         Filmes filme = new Filmes();
 
         filme.setId(id);
-        filme.setNome(nome);
+        filme.setNome(nomef);
         filme.setNota(nota);
         filme.setCategory(categoria);
         filme.setData(data);

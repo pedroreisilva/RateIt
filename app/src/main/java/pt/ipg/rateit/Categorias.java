@@ -15,18 +15,18 @@ public class Categorias {
         this.id = id;
     }
 
-    public String getCategoria() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setCategoria(String genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
     public ContentValues getContentValues() {
         ContentValues valores = new ContentValues();
 
-        valores.put(BdTableCategorias.CAMPO_CATEGORIA, genero);
+        valores.put(BdTableCategorias.CAMPO_GENERO, genero);
 
         return valores;
     }
@@ -37,13 +37,13 @@ public class Categorias {
         );
 
         String genero = cursor.getString(
-                cursor.getColumnIndex(BdTableCategorias.CAMPO_CATEGORIA)
+                cursor.getColumnIndex(BdTableCategorias.CAMPO_GENERO)
         );
 
         Categorias categorias = new Categorias();
 
         categorias.setId(id);
-        categorias.setCategoria(genero);
+        categorias.setGenero(genero);
 
         return categorias;
     }
