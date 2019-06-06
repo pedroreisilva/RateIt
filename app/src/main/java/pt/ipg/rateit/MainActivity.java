@@ -18,11 +18,22 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CursorAdapter;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     private static final int ID_CURSO_LOADER_FILMES = 0;
 
     private AdaptadorFilmes adaptadorFilmes;
+
+    @Override
+    protected void onResume() {
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_FILMES, null, this);
+
+        super.onResume();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,29 +65,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        FloatingActionButton fab = findViewById(R.id.fab);
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
 
         adaptadorFilmes = new AdaptadorFilmes(this);
 
     }
-
-    public void FilmesActivity(View view) {
-
-        Intent intent = new Intent(this, MainFilmes.class);
-
-        startActivity(intent);
-    }
-    public void SeriesActivity(View view) {
-        Intent intent = new Intent(this, MainSeries.class);
-
-        startActivity(intent);
-    }
-    public void CategoriasActivity(View view) {
-        Intent intent = new Intent(this, MainCategorias.class);
-
-        startActivity(intent);
-    }
-
 
     /**
      * Instantiate and return a new Loader for the given ID.
@@ -139,7 +133,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        adaptadorFilmes.setCursor(data);
+        FloatingActionButton fab = findViewById(R.id.fab);
+
+        Snackbar.make(fab, "Filmes existentes: " + data.getCount(), Snackbar.LENGTH_INDEFINITE).show();
+
     }
 
     /**
@@ -154,6 +151,25 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adaptadorFilmes.setCursor(null);
+    }
+
+
+
+    public void FilmesActivity(View view) {
+
+        Intent intent = new Intent(this, MainFilmes.class);
+
+        startActivity(intent);
+    }
+    public void SeriesActivity(View view) {
+        Intent intent = new Intent(this, MainSeries.class);
+
+        startActivity(intent);
+    }
+    public void CategoriasActivity(View view) {
+        Intent intent = new Intent(this, MainCategorias.class);
+
+        startActivity(intent);
     }
 }
 
