@@ -96,6 +96,7 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
         return cursor.getCount();
     }
 
+    private static ViewHolderFilmes viewHolderFilmeSelecionado = null;
 
     public class ViewHolderFilmes extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView textViewNome;
@@ -129,8 +130,21 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, filme.getNome(), Toast.LENGTH_SHORT).show();
+            if (viewHolderFilmeSelecionado != null) {
+                viewHolderFilmeSelecionado.desSeleciona();
+            }
 
+            viewHolderFilmeSelecionado = this;
+
+            seleciona();
+        }
+
+        private void desSeleciona() {
+            itemView.setBackgroundResource(android.R.color.white);
+        }
+
+        private void seleciona() {
+            itemView.setBackgroundResource(R.color.colorItemSelecionado);
         }
     }
 
