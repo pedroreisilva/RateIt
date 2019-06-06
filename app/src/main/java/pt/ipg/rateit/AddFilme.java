@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +33,19 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
 
     private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
 
+    private Spinner spinnerCategorias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_add_filme);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        spinnerCategorias = (Spinner) findViewById(R.id.spinnercat);
 
         Spinner SpinnerCat = findViewById(R.id.spinnercat);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
@@ -122,6 +131,17 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
         super.onResume();
     }
 
+    private void mostraCategoriasSpinner(Cursor cursorCategorias) {
+        SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                cursorCategorias,
+                new String[]{BdTableCategorias.CAMPO_GENERO},
+                new int[]{android.R.id.text1}
+        );
+        spinnerCategorias.setAdapter(adaptadorCategorias);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -161,7 +181,7 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, LivrosContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_DESCRICAO
+        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, RateItContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_GENERO
         );
 
         return cursorLoader;
@@ -210,7 +230,7 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        // todo: atualizar os dados do spinner
+        mostraCategoriasSpinner(data);
     }
 
     /**
@@ -224,6 +244,6 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        // todo: atualizar os dados do spinner
+        mostraCategoriasSpinner(null);
     }
 }
