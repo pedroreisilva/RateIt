@@ -10,8 +10,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHolderFilmes>{
+public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHolderFilmes> {
 
     private Cursor cursor;
     private Context context;
@@ -96,7 +97,7 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
     }
 
 
-    public class ViewHolderFilmes extends RecyclerView.ViewHolder{
+    public class ViewHolderFilmes extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView textViewNome;
         private TextView textViewCategoria;
         private TextView textViewNota;
@@ -112,6 +113,8 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
             textViewNota =  (TextView)itemView.findViewById(R.id.textViewNota);
             textViewData =  (TextView)itemView.findViewById(R.id.textViewData);
 
+            itemView.setOnClickListener(this);
+
         }
 
         public void setFilme(Filmes filme) {
@@ -124,6 +127,11 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
 
         }
 
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(context, filme.getNome(), Toast.LENGTH_SHORT).show();
+
+        }
     }
 
 }
