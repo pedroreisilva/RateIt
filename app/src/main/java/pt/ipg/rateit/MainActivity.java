@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         adaptadorFilmes = new AdaptadorFilmes(this);
 
     }
+
+
+
 
     /**
      * Instantiate and return a new Loader for the given ID.
