@@ -43,6 +43,9 @@
     <string name="nome_categoria">Nome da Categoria</string>
     <string name="data_de_visualização">Data de Visualização</string>
     <string name="errospinner">Selecione um item</string>
+    <string name="inserir">Inserir</string>
+    <string name="alterar">Alterar</string>
+    <string name="eliminar">Eliminar</string>
 
 
     <string-array name="categorias">
