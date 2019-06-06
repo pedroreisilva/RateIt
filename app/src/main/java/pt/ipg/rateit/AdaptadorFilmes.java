@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.TextView;
 
 public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHolderFilmes>{
 
@@ -96,14 +97,31 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
 
 
     public class ViewHolderFilmes extends RecyclerView.ViewHolder{
+        private TextView textViewNome;
+        private TextView textViewCategoria;
+        private TextView textViewNota;
+        private TextView textViewData;
+
         private Filmes filme;
 
         public ViewHolderFilmes(@NonNull View itemView) {
             super(itemView);
+
+            textViewNome = (TextView)itemView.findViewById(R.id.textViewNome);
+            textViewCategoria =  (TextView)itemView.findViewById(R.id.textViewCategoria);
+            textViewNota =  (TextView)itemView.findViewById(R.id.textViewNota);
+            textViewData =  (TextView)itemView.findViewById(R.id.textViewData);
+
         }
 
         public void setFilme(Filmes filme) {
             this.filme = filme;
+
+            textViewNome.setText(filme.getNome());
+            textViewCategoria.setText(String.valueOf(filme.getCategory()));
+            textViewNota.setText(String.valueOf(filme.getNota()));
+            textViewData.setText(String.valueOf(filme.getData()));
+
         }
 
     }
