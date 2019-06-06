@@ -1,4 +1,5 @@
 <resources>
     <dimen name="margem_default">8dp</dimen>
     <dimen name="margem_esp">50dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

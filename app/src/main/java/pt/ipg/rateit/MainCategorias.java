@@ -23,19 +23,16 @@ public class MainCategorias extends AppCompatActivity {
 
         startActivity(intent);
     }
-
     public void EditCategoriaActivity(View view) {
         Intent intent = new Intent(this, EditCategoria.class);
 
         startActivity(intent);
     }
-
     public void DelCategoriaActivity(View view) {
         Intent intent = new Intent(this, DelCategoria.class);
 
         startActivity(intent);
     }
-
     public void ListaCategoriaActivity(View view) {
         Intent intent = new Intent(this, ListaCategorias.class);
 
