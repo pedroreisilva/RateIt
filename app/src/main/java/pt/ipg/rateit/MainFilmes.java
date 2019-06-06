@@ -31,7 +31,7 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
         setContentView(R.layout.content_filmes);
 
         recyclerViewFilmes = (RecyclerView) findViewById(R.id.recyclerViewFilmes);
-        adaptadorFilmes = new AdaptadorFilmes();
+        adaptadorFilmes = new AdaptadorFilmes(this);
         recyclerViewFilmes.setAdapter(adaptadorFilmes);
         recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
     }
