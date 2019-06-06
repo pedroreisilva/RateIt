@@ -87,6 +87,10 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
             return true;
         } else if (id == R.id.action_inserir) {
             Toast.makeText(this, "Inserir", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, AddFilme.class);
+
+            startActivity(intent);
+
             return true;
         } else if (id == R.id.action_alterar) {
             Toast.makeText(this, "Alterar", Toast.LENGTH_SHORT).show();
