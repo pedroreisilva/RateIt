@@ -46,6 +46,13 @@
     <string name="inserir">Inserir</string>
     <string name="alterar">Alterar</string>
     <string name="eliminar">Eliminar</string>
+    <string name="title_activity_add_filme">AddFilme</string>
+    <string name="nome">Nome</string>
+    <string name="nota">Nota</string>
+    <string name="categoria">Categoria</string>
+    <string name="data">Data</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
 
 
     <string-array name="categorias">
