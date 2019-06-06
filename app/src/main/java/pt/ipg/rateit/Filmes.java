@@ -10,6 +10,11 @@ public class Filmes {
     private int nota;
     private String data;
     private long category;
+    private String nomeCategoria; // Campo "externo"
+
+    public String getNomeCategoria() {
+        return nomeCategoria;
+    }
 
     public long getId() {
         return id;
@@ -84,6 +89,11 @@ public class Filmes {
                 cursor.getColumnIndex(BdTableFilmes.CAMPO_DATA_VISUALIZACAO)
         );
 
+        String nomeCategoria = cursor.getString(
+                cursor.getColumnIndex(BdTableFilmes.ALIAS_NOME_CATEGORIA)
+        );
+
+
         Filmes filme = new Filmes();
 
         filme.setId(id);
@@ -91,6 +101,8 @@ public class Filmes {
         filme.setNota(nota);
         filme.setCategory(categoria);
         filme.setData(data);
+        filme.nomeCategoria = nomeCategoria;
+
 
         return filme;
     }
