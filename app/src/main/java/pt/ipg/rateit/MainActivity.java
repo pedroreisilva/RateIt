@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private static final int ID_CURSO_LOADER_FILMES = 0;
 
-    private RecyclerView recyclerViewFilmes;
     private AdaptadorFilmes adaptadorFilmes;
 
     @Override
@@ -57,10 +56,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
 
-        recyclerViewFilmes = (RecyclerView) findViewById(R.id.recyclerViewFilmes);
         adaptadorFilmes = new AdaptadorFilmes(this);
-        recyclerViewFilmes.setAdapter(adaptadorFilmes);
-        recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
