@@ -96,6 +96,12 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
         return cursor.getCount();
     }
 
+    public Filmes getFilmeSelecionado() {
+        if (viewHolderFilmeSelecionado == null) return null;
+
+        return viewHolderFilmeSelecionado.filme;
+    }
+
     private static ViewHolderFilmes viewHolderFilmeSelecionado = null;
 
     public class ViewHolderFilmes extends RecyclerView.ViewHolder implements View.OnClickListener{
