@@ -20,6 +20,7 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
     }
 
     public void setCursor(Cursor cursor) {
+        this.cursor = cursor;
         if (this.cursor != cursor) {
             this.cursor = cursor;
             notifyDataSetChanged();
