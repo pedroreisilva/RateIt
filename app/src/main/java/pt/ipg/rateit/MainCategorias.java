@@ -13,7 +13,7 @@ public class MainCategorias extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categorias);
+        setContentView(R.layout.content_categorias);
 
         Toast.makeText(MainCategorias.this,atividade_categorias,Toast.LENGTH_SHORT).show();
     }

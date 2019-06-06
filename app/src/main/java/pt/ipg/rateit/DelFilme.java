@@ -13,7 +13,7 @@ public class DelFilme extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_del_filme);
+        setContentView(R.layout.content_del_filme);
 
         Button buttonCancel = findViewById(R.id.buttonCancel);
         buttonCancel.setOnClickListener(new View.OnClickListener() {

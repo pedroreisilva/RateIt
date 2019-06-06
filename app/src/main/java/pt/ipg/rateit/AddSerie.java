@@ -26,7 +26,7 @@ public class AddSerie extends AppCompatActivity implements AdapterView.OnItemSel
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_serie);
+        setContentView(R.layout.content_add_serie);
 
 
         Button buttonCancel = findViewById(R.id.buttonCancel);

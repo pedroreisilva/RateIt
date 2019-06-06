@@ -12,7 +12,7 @@ public class DelSerie extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_del_serie);
+        setContentView(R.layout.content_del_serie);
 
         Button buttonCancel = findViewById(R.id.buttonCancel);
 

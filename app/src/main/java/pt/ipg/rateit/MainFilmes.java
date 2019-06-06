@@ -14,7 +14,7 @@ public class MainFilmes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filmes);
+        setContentView(R.layout.content_filmes);
 
         Toast.makeText(MainFilmes.this,atividade_filmes,Toast.LENGTH_SHORT).show();
     }

@@ -9,6 +9,6 @@ public class ListaCategorias extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_categorias);
+        setContentView(R.layout.content_lista_categorias);
     }
 }

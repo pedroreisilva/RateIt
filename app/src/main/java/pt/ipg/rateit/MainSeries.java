@@ -14,7 +14,7 @@ public class MainSeries extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_series);
+        setContentView(R.layout.content_series);
 
         Toast.makeText(MainSeries.this,atividade_series,Toast.LENGTH_SHORT).show();
     }

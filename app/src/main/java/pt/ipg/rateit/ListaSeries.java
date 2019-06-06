@@ -9,6 +9,6 @@ public class ListaSeries extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_series);
+        setContentView(R.layout.content_lista_series);
     }
 }

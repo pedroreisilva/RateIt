@@ -22,7 +22,7 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_filme);
+        setContentView(R.layout.content_add_filme);
 
 
         Spinner SpinnerCat = findViewById(R.id.spinnercat);
