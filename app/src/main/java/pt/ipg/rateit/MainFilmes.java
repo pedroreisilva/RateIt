@@ -12,12 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
 import static pt.ipg.rateit.DefinicoesApp.atividade_filmes;
 
-public class MainFilmes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class MainFilmes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int ID_CURSO_LOADER_FILMES = 0;
 
@@ -29,6 +33,10 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_filmes);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
 
         recyclerViewFilmes = (RecyclerView) findViewById(R.id.recyclerViewFilmes);
         adaptadorFilmes = new AdaptadorFilmes(this);
@@ -36,31 +44,60 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
         recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void AddFilmeActivity(View view) {
-        Intent intent = new Intent(this, AddFilme.class);
 
-        startActivity(intent);
-    }
+    @Override
+    protected void onResume() {
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_FILMES, null, this);
 
-    public void EditFilmeActivity(View view) {
-        Intent intent = new Intent(this, EditFilme.class);
-
-        startActivity(intent);
-    }
-
-    public void DelFilmeActivity(View view) {
-        Intent intent = new Intent(this, DelFilme.class);
-
-        startActivity(intent);
-    }
-
-    public void ListaFilmeActivity(View view) {
-        Intent intent = new Intent(this, ListaFilmes.class);
-
-        startActivity(intent);
+        super.onResume();
     }
 
 
+    private Menu menu;
+
+    public void atualizaOpcoesMenu() {
+        Filmes filme = adaptadorFilmes.getFilmeSelecionado();
+
+        boolean mostraAlterarEliminar = (filme != null);
+
+        menu.findItem(R.id.action_alterar).setVisible(mostraAlterarEliminar);
+        menu.findItem(R.id.action_eliminar).setVisible(mostraAlterarEliminar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        this.menu = menu;
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.action_inserir) {
+            Toast.makeText(this, "Inserir", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_alterar) {
+            Toast.makeText(this, "Alterar", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_eliminar) {
+            Toast.makeText(this, "Eliminar", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @NonNull
     @Override
@@ -80,4 +117,27 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adaptadorFilmes.setCursor(null);
     }
+
+
+    public void AddFilmeActivity(View view) {
+        Intent intent = new Intent(this, AddFilme.class);
+
+        startActivity(intent);
+    }
+    public void EditFilmeActivity(View view) {
+        Intent intent = new Intent(this, EditFilme.class);
+
+        startActivity(intent);
+    }
+    public void DelFilmeActivity(View view) {
+        Intent intent = new Intent(this, DelFilme.class);
+
+        startActivity(intent);
+    }
+    public void ListaFilmeActivity(View view) {
+        Intent intent = new Intent(this, ListaFilmes.class);
+
+        startActivity(intent);
+    }
 }
+

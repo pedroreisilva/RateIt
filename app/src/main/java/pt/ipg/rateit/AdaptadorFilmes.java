@@ -142,6 +142,8 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
 
             viewHolderFilmeSelecionado = this;
 
+            ((MainFilmes) context).atualizaOpcoesMenu();
+
             seleciona();
         }
 
