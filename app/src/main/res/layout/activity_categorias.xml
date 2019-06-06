@@ -1,76 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainCategorias">
 
-    <Button
-        android:id="@+id/buttonAddCategoria"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="135dp"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="135dp"
-        android:layout_marginRight="135dp"
-        android:layout_marginBottom="51dp"
-        android:text="@string/adicionar_categoria"
-        android:onClick="AddCategoriaActivity"
-        app:layout_constraintBottom_toTopOf="@+id/buttonEditCategoria"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <Button
-        android:id="@+id/buttonEditCategoria"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginRight="144dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/editar_categorias"
-        android:onClick="EditCategoriaActivity"
-        app:layout_constraintBottom_toTopOf="@+id/buttonDelCategoria"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddCategoria" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <Button
-        android:id="@+id/buttonDelCategoria"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginRight="144dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/apagar_categoria"
-        android:onClick="DelCategoriaActivity"
-        app:layout_constraintBottom_toTopOf="@+id/buttonListaCategorias"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEditCategoria" />
+    </android.support.design.widget.AppBarLayout>
 
-    <Button
-        android:id="@+id/buttonListaCategorias"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginRight="155dp"
-        android:layout_marginBottom="250dp"
-        android:text="@string/ver_categorias"
-        android:onClick="ListaCategoriaActivity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDelCategoria" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/content_categorias" />
+
+</android.support.design.widget.CoordinatorLayout>

@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
 
         adaptadorFilmes = new AdaptadorFilmes(this);
@@ -133,9 +132,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        FloatingActionButton fab = findViewById(R.id.fab);
-
-        Snackbar.make(fab, "Filmes existentes: " + data.getCount(), Snackbar.LENGTH_INDEFINITE).show();
 
     }
 
