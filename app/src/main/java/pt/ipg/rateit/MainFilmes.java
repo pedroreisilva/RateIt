@@ -24,6 +24,8 @@ import static pt.ipg.rateit.DefinicoesApp.atividade_filmes;
 public class MainFilmes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int ID_CURSO_LOADER_FILMES = 0;
+    public static final String ID_FILME = "ID_FILME";
+
 
     private RecyclerView recyclerViewFilmes;
     private AdaptadorFilmes adaptadorFilmes;
@@ -32,7 +34,7 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_filmes);
+        setContentView(R.layout.activity_filmes);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -71,32 +73,34 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
 
         this.menu = menu;
 
+
         return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_inserir) {
-            Toast.makeText(this, "Inserir", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, AddFilme.class);
-
             startActivity(intent);
 
             return true;
         } else if (id == R.id.action_alterar) {
-            Toast.makeText(this, "Alterar", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, EditFilme.class);
+            intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
+            startActivity(intent);
+
             return true;
         } else if (id == R.id.action_eliminar) {
-            Toast.makeText(this, "Eliminar", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, DelFilme.class);
+            intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
+
+            startActivity(intent);
+
             return true;
         }
 
@@ -135,11 +139,6 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
     }
     public void DelFilmeActivity(View view) {
         Intent intent = new Intent(this, DelFilme.class);
-
-        startActivity(intent);
-    }
-    public void ListaFilmeActivity(View view) {
-        Intent intent = new Intent(this, ListaFilmes.class);
 
         startActivity(intent);
     }

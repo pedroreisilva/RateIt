@@ -33,10 +33,5 @@ public class MainCategorias extends AppCompatActivity {
 
         startActivity(intent);
     }
-    public void ListaCategoriaActivity(View view) {
-        Intent intent = new Intent(this, ListaCategorias.class);
-
-        startActivity(intent);
-    }
 
 }

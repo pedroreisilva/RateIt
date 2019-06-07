@@ -47,12 +47,29 @@
     <string name="alterar">Alterar</string>
     <string name="eliminar">Eliminar</string>
     <string name="title_activity_add_filme">AddFilme</string>
+    <string name="title_activity_add_serie">AddSerie</string>
+    <string name="title_activity_add_categoria">AddCategoria</string>
+    <string name="title_activity_edit_filme">EditFilme</string>
+    <string name="title_activity_edit_serie">EditSerie</string>
+    <string name="title_activity_edit_categoria">EditCategoria</string>
+    <string name="title_activity_del_filme">DelFilme</string>
+    <string name="title_activity_del_serie">DelSerie</string>
+    <string name="title_activity_del_categoria">DelCategoria</string>
+    <string name="title_activity_main_filmes">MainFilmes</string>
+    <string name="title_activity_main_series">MainSeries</string>
+    <string name="title_activity_main_categorias">MainCategorias</string>
+    <string name="title_activity_main_activity">MainActivity</string>
+    <string name="title_activity_lista_filmes">ListaFilmes</string>
     <string name="nome">Nome</string>
     <string name="nota">Nota</string>
     <string name="categoria">Categoria</string>
     <string name="data">Data</string>
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="erro_guardar_filme">Erro: Não foi possível guardar o filme</string>
+    <string name="preecha_nome">Preencha o nome</string>
+    <string name="nome_dos_filmes">Nome dos Filmes:</string>
+
 
 
     <string-array name="categorias">

@@ -3,7 +3,6 @@ package pt.ipg.rateit;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.database.Cursor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,18 +26,26 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
 
+    private EditText editTextNomeFilme;
     private Spinner spinnerCategorias;
+    private Spinner spinnerNota;
+    private TextView textViewData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_add_filme);
+        setContentView(R.layout.activity_add_filme);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -46,6 +53,7 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
 
 
         spinnerCategorias = (Spinner) findViewById(R.id.spinnercat);
+        spinnerNota = (Spinner) findViewById(R.id.spinnernotas);
 
         Spinner SpinnerCat = findViewById(R.id.spinnercat);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
@@ -83,6 +91,14 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
+
+        textViewData = (TextView) findViewById(R.id.textViewData);
+        SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
+        Date data =  new Date();
+        String dataFormatada =  formatadata.format(data);
+
+        textViewData.setText(dataFormatada);
+
     }
 
     @Override
@@ -100,24 +116,51 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
     Calendar c;
     DatePickerDialog dpd;
 
-    public void validarCampos(){
-        EditText editTextFilmeName = findViewById(R.id.editTextNomeFilme);
-        String mensagem = editTextFilmeName.getText().toString();
+    public void guardar(){
 
-        if (mensagem.trim().length() == 0) {
-            editTextFilmeName.setError(getString(R.string.nome_obrigatoria));
-        }else{
+        String nome = editTextNomeFilme.getText().toString();
+
+        if (nome.trim().isEmpty()) {
+            editTextNomeFilme.setError(getString(R.string.preecha_nome));
+            return;
+        }
+
+        SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
+        Date data =  new Date();
+        String dataFormatada =  formatadata.format(data);
+
+        textViewData.setText(dataFormatada);
+
+        long idNota = spinnerNota.getSelectedItemId();
+        long idCategoria = spinnerCategorias.getSelectedItemId();
+
+        // guardar os dados
+        Filmes filme = new Filmes();
+
+        filme.setNome(nome);
+        filme.setNota((int) idNota);
+        filme.setCategory(idCategoria);
+        filme.setData(dataFormatada);
+
+
+        try {
+            getContentResolver().insert(RateItContentProvider.ENDERECO_FILMES, filme.getContentValues());
+
+            Toast.makeText(this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
             finish();
-            Toast.makeText(AddFilme.this,getString(R.string.filme_adicionado),Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Snackbar.make(
+                    editTextNomeFilme,
+                    getString(R.string.erro_guardar_filme),
+                    Snackbar.LENGTH_LONG)
+                    .show();
+
+            e.printStackTrace();
         }
     }
-    public void guardar(View view) {
 
-        validarCampos();
 
-    }
     public void finish(View view) {
-
         finish();
         Toast.makeText(this, (getString(R.string.finish)), Toast.LENGTH_SHORT).show();
     }
@@ -160,6 +203,7 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_guardar) {
+            guardar();
             return true;
         } else if (id == R.id.action_cancelar) {
             finish();

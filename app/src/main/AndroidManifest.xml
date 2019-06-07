@@ -9,24 +9,55 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListaCategorias"></activity>
-        <activity android:name=".MainCategorias" />
-        <activity android:name=".DelCategoria" />
-        <activity android:name=".EditCategoria" />
-        <activity android:name=".AddCategoria" />
-        <activity android:name=".ListaSeries" />
-        <activity android:name=".ListaFilmes" />
-        <activity android:name=".DelSerie" />
-        <activity android:name=".EditSerie" />
-        <activity android:name=".AddSerie" />
-        <activity android:name=".DelFilme" />
-        <activity android:name=".EditFilme" />
-        <activity android:name=".AddFilme" />
-        <activity android:name=".MainSeries" />
-        <activity android:name=".MainFilmes" />
         <activity
-
-
+            android:name=".AddFilme"
+            android:label="@string/title_activity_add_filme"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditFilme"
+            android:label="@string/title_activity_edit_filme"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DelFilme"
+            android:label="@string/title_activity_del_filme"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddSerie"
+            android:label="@string/title_activity_add_serie"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditSerie"
+            android:label="@string/title_activity_edit_serie"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DelSerie"
+            android:label="@string/title_activity_del_serie"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddCategoria"
+            android:label="@string/title_activity_add_categoria"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditCategoria"
+            android:label="@string/title_activity_edit_categoria"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DelCategoria"
+            android:label="@string/title_activity_del_categoria"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainFilmes"
+            android:label="@string/title_activity_main_filmes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainSeries"
+            android:label="@string/title_activity_main_filmes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainCategorias"
+            android:label="@string/title_activity_main_filmes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -37,7 +68,8 @@
             </intent-filter>
         </activity>
 
-	<provider
+
+        <provider
             android:authorities="pt.ipg.rateit"
             android:name=".RateItContentProvider"
             android:exported="false" />

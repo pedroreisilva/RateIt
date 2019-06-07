@@ -37,9 +37,5 @@ public class MainSeries extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void ListaSerieActivity(View view) {
-        Intent intent = new Intent(this, ListaSeries.class);
 
-        startActivity(intent);
-    }
 }
