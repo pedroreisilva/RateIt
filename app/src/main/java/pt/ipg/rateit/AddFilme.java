@@ -1,51 +1,34 @@
 package pt.ipg.rateit;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.CursorLoader;
+import android.database.Cursor;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CursorAdapter;
-import android.app.DatePickerDialog;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-import static java.lang.Integer.numberOfLeadingZeros;
-import static java.lang.Integer.valueOf;
-
 public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int ID_CURSO_LOADER_FILMES = 0;
-    public static final String ID_FILME = "ID_FILME";
 
-    private RecyclerView recyclerViewFilmes;
-    private AdaptadorFilmes adaptadorFilmes;
+    private EditText editTextNome;
+    private Spinner spinnerCategorias;
+    private EditText editTextNota;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +37,13 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerViewFilmes = (RecyclerView) findViewById(R.id.recyclerViewFilmes);
-        adaptadorFilmes = new AdaptadorFilmes(this);
-        recyclerViewFilmes.setAdapter(adaptadorFilmes);
-        recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
+        editTextNome = (EditText) findViewById(R.id.editTextNome);
+        spinnerCategorias = (Spinner) findViewById(R.id.spinnerCategorias);
+        editTextNota = (EditText) findViewById(R.id.editTextNota);
+
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
     }
 
     @Override
@@ -69,24 +53,21 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         super.onResume();
     }
 
-    private Menu menu;
-
-    public void atualizaOpcoesMenu() {
-        Filmes filme = adaptadorFilmes.getFilmeSelecionado();
-
-        boolean mostraAlterarEliminar = (filme != null);
-
-        menu.findItem(R.id.action_alterar).setVisible(mostraAlterarEliminar);
-        menu.findItem(R.id.action_eliminar).setVisible(mostraAlterarEliminar);
+    private void mostraCategoriasSpinner(Cursor cursorCategorias) {
+        SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                cursorCategorias,
+                new String[]{BdTableCategorias.CAMPO_GENERO},
+                new int[]{android.R.id.text1}
+        );
+        spinnerCategorias.setAdapter(adaptadorCategorias);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        this.menu = menu;
-
+        getMenuInflater().inflate(R.menu.menu_guardar, menu);
         return true;
     }
 
@@ -100,32 +81,86 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        } else if (id == R.id.action_inserir) {
-            Intent intent = new Intent(this, AddFilme.class);
-            startActivity(intent);
-
+        } else if (id == R.id.action_guardar) {
+            guardar();
             return true;
-        } else if (id == R.id.action_alterar) {
-            Intent intent = new Intent(this, EditFilme.class);
-            intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
-            startActivity(intent);
-
-            return true;
-        } else if (id == R.id.action_eliminar) {
-            Intent intent = new Intent(this, DelFilme.class);
-            intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
-            startActivity(intent);
-
+        } else if (id == R.id.action_cancelar) {
+            finish();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void guardar() {
+
+        String nome = editTextNome.getText().toString();
+        if (editTextNome.length() == 0){
+            editTextNome.setError(getString(R.string.nome_obrigatoria));
+        }else if (editTextNome.length() <= 3){
+            editTextNome.setError(getString(R.string.nome_obrigatoria));
+        }else if(editTextNome.length() >= 25){
+            editTextNome.setError(getString(R.string.nome_obrigatoria));
+        }else {
+            Toast.makeText(AddFilme.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        int nota;
+
+        String strNota = editTextNota.getText().toString();
+
+        if (strNota.trim().isEmpty()) {
+            editTextNota.setError(getString(R.string.preecha_nome));
+            return;
+        }
+
+        try {
+            nota = Integer.parseInt(strNota);
+        } catch (NumberFormatException e) {
+            editTextNota.setError(getString(R.string.Erro));
+            return;
+        }
+
+        long idCategoria = spinnerCategorias.getSelectedItemId();
+
+        // guardar os dados
+        Filmes filme = new Filmes();
+
+        filme.setNome(nome);
+        filme.setCategory(idCategoria);
+        filme.setNota(nota);
+
+
+        try {
+            getContentResolver().insert(RateItContentProvider.ENDERECO_FILMES, filme.getContentValues());
+
+            Toast.makeText(this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
+            finish();
+        } catch (Exception e) {
+            Snackbar.make(
+                    editTextNome,
+                    getString(R.string.erro_guardar_filme),
+                    Snackbar.LENGTH_LONG)
+                    .show();
+
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Instantiate and return a new Loader for the given ID.
+     *
+     * <p>This will always be called from the process's main thread.
+     *
+     * @param id   The ID whose loader is to be created.
+     * @param args Any arguments supplied by the caller.
+     * @return Return a new Loader instance that is ready to start loading.
+     */
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, RateItContentProvider.ENDERECO_FILMES, BdTableFilmes.TODAS_COLUNAS, null, null, BdTableFilmes.CAMPO_NOME
+        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, RateItContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_GENERO
         );
 
         return cursorLoader;
@@ -174,7 +209,7 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        adaptadorFilmes.setCursor(data);
+        mostraCategoriasSpinner(data);
     }
 
     /**
@@ -188,6 +223,6 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        adaptadorFilmes.setCursor(null);
+        mostraCategoriasSpinner(null);
     }
 }

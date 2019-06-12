@@ -24,6 +24,7 @@ public class MainCategorias extends AppCompatActivity implements LoaderManager.L
 
     private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
     public static final String ID_CATEGORIA = "ID_CATEGORIA";
+
     private AdaptadorCategorias adaptadorCategorias;
     private RecyclerView recyclerViewCategorias;
 

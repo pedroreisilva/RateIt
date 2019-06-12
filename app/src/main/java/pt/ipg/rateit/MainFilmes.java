@@ -40,7 +40,7 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
 
-        recyclerViewFilmes = (RecyclerView) findViewById(R.id.recyclerViewFilmes);
+        recyclerViewFilmes = (RecyclerView) findViewById(R.id.RecyclerViewFilmes);
         adaptadorFilmes = new AdaptadorFilmes(this);
         recyclerViewFilmes.setAdapter(adaptadorFilmes);
         recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
