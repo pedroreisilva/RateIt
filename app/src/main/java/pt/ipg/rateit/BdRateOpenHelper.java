@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class BdRateOpenHelper extends SQLiteOpenHelper {
 
-    public static final String NOME_BASE_DADOS = "rate.db";
+    public static final String NOME_BASE_DADOS = "rateit.db";
     private static final int VERSAO_BASE_DADOS = 1;
 
     /**

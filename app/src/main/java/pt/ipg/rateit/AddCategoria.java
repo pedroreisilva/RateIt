@@ -1,42 +1,126 @@
 package pt.ipg.rateit;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddCategoria extends AppCompatActivity {
+import com.google.android.material.snackbar.Snackbar;
+
+public class AddCategoria extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
+
+    private EditText editTextNomeCategoria;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_add_categoria);
+        setContentView(R.layout.activity_add_categoria);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        Button buttonCancel = findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        Button buttonInsCategoria = findViewById(R.id.buttonInsCategoria);
-        buttonInsCategoria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText editTextCategoriaName = findViewById(R.id.editTextNomeCategoria);
-                String mensagem = editTextCategoriaName.getText().toString();
 
-                if (mensagem.trim().length() == 0) {
-                    editTextCategoriaName.setError(getString(R.string.nome_obrigatoria));
-                }else{
-                    finish();
-                    Toast.makeText(AddCategoria.this,getString(R.string.categoria_adicionado),Toast.LENGTH_SHORT).show();
-                }
-            }
+        editTextNomeCategoria = (EditText) findViewById(R.id.editTextNomeCategoria);
 
-        });
+
+
+
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_guardar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.action_guardar) {
+            guardar();
+            return true;
+        } else if (id == R.id.action_cancelar) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void guardar(){
+
+        String nomecategoria = editTextNomeCategoria.getText().toString();
+        if (nomecategoria.trim().length() == 0){
+            editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
+        }else if (nomecategoria.length() <= 3){
+            editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
+        }else if(nomecategoria.length() >= 25){
+            editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
+        }else {
+            Toast.makeText(AddCategoria.this, getString(R.string.categoria_adicionado), Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+
+        Categorias categoria = new Categorias();
+
+        categoria.setGenero(nomecategoria);
+
+
+        try {
+            getContentResolver().insert(RateItContentProvider.ENDERECO_CATEGORIAS, categoria.getContentValues());
+
+            Toast.makeText(this, getString(R.string.categoria_adicionado), Toast.LENGTH_SHORT).show();
+            finish();
+        } catch (Exception e) {
+            Snackbar.make(
+                    editTextNomeCategoria,
+                    getString(R.string.Erro),
+                    Snackbar.LENGTH_LONG)
+                    .show();
+
+            e.printStackTrace();
+        }
+
+
+
+
+
+    }
+
+    @NonNull
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, @Nullable Bundle bundle) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+
+    }
+
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+
     }
 }
