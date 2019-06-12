@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHolderFilmes> {
-
+public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHolderFilme> {
     private Cursor cursor;
     private Context context;
 
@@ -51,10 +50,10 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
      */
     @NonNull
     @Override
-    public AdaptadorFilmes.ViewHolderFilmes onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdaptadorFilmes.ViewHolderFilme onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item_filme = LayoutInflater.from(context).inflate(R.layout.item_filme, parent, false);
 
-        return new ViewHolderFilmes(item_filme);
+        return new ViewHolderFilme(item_filme);
     }
 
     /**
@@ -78,7 +77,7 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(@NonNull AdaptadorFilmes.ViewHolderFilmes holder, int position) {
+    public void onBindViewHolder(@NonNull AdaptadorFilmes.ViewHolderFilme holder, int position) {
         cursor.moveToPosition(position);
         Filmes filme = Filmes.fromCursor(cursor);
         holder.setFilme(filme);
@@ -102,9 +101,9 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
         return viewHolderFilmeSelecionado.filme;
     }
 
-    private static ViewHolderFilmes viewHolderFilmeSelecionado = null;
+    private static ViewHolderFilme viewHolderFilmeSelecionado = null;
 
-    public class ViewHolderFilmes extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolderFilme extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView textViewNome;
         private TextView textViewCategoria;
         private TextView textViewNota;
@@ -112,7 +111,7 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
 
         private Filmes filme;
 
-        public ViewHolderFilmes(@NonNull View itemView) {
+        public ViewHolderFilme(@NonNull View itemView) {
             super(itemView);
 
             textViewNome = (TextView)itemView.findViewById(R.id.textViewNome);

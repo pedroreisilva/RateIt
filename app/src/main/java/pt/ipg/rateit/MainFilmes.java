@@ -1,29 +1,36 @@
 package pt.ipg.rateit;
 
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
+import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import androidx.appcompat.widget.Toolbar;
+import android.widget.CursorAdapter;
+import android.widget.Toast;
 
 public class MainFilmes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int ID_CURSO_LOADER_FILMES = 0;
     public static final String ID_FILME = "ID_FILME";
 
-
     private RecyclerView recyclerViewFilmes;
     private AdaptadorFilmes adaptadorFilmes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +96,6 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
         } else if (id == R.id.action_eliminar) {
             Intent intent = new Intent(this, DelFilme.class);
             intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
-
             startActivity(intent);
 
             return true;

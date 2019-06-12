@@ -2,14 +2,18 @@ package pt.ipg.rateit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
-import android.content.CursorLoader;
+import android.content.Intent;
 import android.database.Cursor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CursorAdapter;
@@ -32,15 +36,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
+import static java.lang.Integer.numberOfLeadingZeros;
+import static java.lang.Integer.valueOf;
 
-    private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
+public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private EditText editTextNomeFilme;
-    private Spinner spinnerCategorias;
-    private Spinner spinnerNota;
-    private TextView textViewData;
+    private static final int ID_CURSO_LOADER_FILMES = 0;
+    public static final String ID_FILME = "ID_FILME";
 
+    private RecyclerView recyclerViewFilmes;
+    private AdaptadorFilmes adaptadorFilmes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,141 +54,39 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
 
-
-        spinnerCategorias = (Spinner) findViewById(R.id.spinnercat);
-        spinnerNota = (Spinner) findViewById(R.id.spinnernotas);
-
-        Spinner SpinnerCat = findViewById(R.id.spinnercat);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        SpinnerCat.setAdapter(adapter);
-        SpinnerCat.setOnItemSelectedListener(this);
-
-        Spinner SpinnerNota = findViewById(R.id.spinnernotas);
-        ArrayAdapter<CharSequence> adapters = ArrayAdapter.createFromResource(this, R.array.notas, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        SpinnerNota.setAdapter(adapters);
-        SpinnerNota.setOnItemSelectedListener(this);
-
-
-        mTextView = findViewById(R.id.textViewData);
-        mButton = findViewById(R.id.buttonData);
-
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                c = Calendar.getInstance();
-                int dia = c.get(Calendar.DAY_OF_MONTH);
-                int mes = c.get(Calendar.MONTH);
-                int ano = c.get(Calendar.YEAR);
-
-                dpd = new DatePickerDialog(AddFilme.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        mTextView.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-                    }
-                }, dia, mes, ano);
-                dpd.show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
-
-        textViewData = (TextView) findViewById(R.id.textViewData);
-        SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
-        Date data =  new Date();
-        String dataFormatada =  formatadata.format(data);
-
-        textViewData.setText(dataFormatada);
-
+        recyclerViewFilmes = (RecyclerView) findViewById(R.id.recyclerViewFilmes);
+        adaptadorFilmes = new AdaptadorFilmes(this);
+        recyclerViewFilmes.setAdapter(adaptadorFilmes);
+        recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
     }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    TextView mTextView;
-    Button mButton;
-    Calendar c;
-    DatePickerDialog dpd;
-
-    public void guardar(){
-
-
-        SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
-        Date data =  new Date();
-        String dataFormatada =  formatadata.format(data);
-
-        textViewData.setText(dataFormatada);
-
-        String nome = editTextNomeFilme.getText().toString();
-        if (nome.trim().isEmpty()) {
-            editTextNomeFilme.setError(getString(R.string.preecha_nome));
-        }else {
-            Toast.makeText(AddFilme.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
-            finish();
-        }
-
-        long idNota = spinnerNota.getSelectedItemId();
-        long idCategoria = spinnerCategorias.getSelectedItemId();
-
-        // guardar os dados
-        Filmes filme = new Filmes();
-
-        filme.setNome(nome);
-        filme.setNota((int) idNota);
-        filme.setCategory(idCategoria);
-        filme.setData(dataFormatada);
-
-
-        try {
-            getContentResolver().insert(RateItContentProvider.ENDERECO_FILMES, filme.getContentValues());
-
-            Toast.makeText(this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
-            finish();
-        } catch (Exception e) {
-            Snackbar.make(
-                    editTextNomeFilme,
-                    getString(R.string.erro_guardar_filme),
-                    Snackbar.LENGTH_LONG)
-                    .show();
-
-            e.printStackTrace();
-        }
-    }
-    
 
     @Override
     protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_FILMES, null, this);
 
         super.onResume();
     }
 
-    private void mostraCategoriasSpinner(Cursor cursorCategorias) {
-        SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
-                this,
-                android.R.layout.simple_list_item_1,
-                cursorCategorias,
-                new String[]{BdTableCategorias.CAMPO_GENERO},
-                new int[]{android.R.id.text1}
-        );
-        spinnerCategorias.setAdapter(adaptadorCategorias);
+    private Menu menu;
+
+    public void atualizaOpcoesMenu() {
+        Filmes filme = adaptadorFilmes.getFilmeSelecionado();
+
+        boolean mostraAlterarEliminar = (filme != null);
+
+        menu.findItem(R.id.action_alterar).setVisible(mostraAlterarEliminar);
+        menu.findItem(R.id.action_eliminar).setVisible(mostraAlterarEliminar);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_guardar, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        this.menu = menu;
+
         return true;
     }
 
@@ -197,30 +100,32 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        } else if (id == R.id.action_guardar) {
-            guardar();
+        } else if (id == R.id.action_inserir) {
+            Intent intent = new Intent(this, AddFilme.class);
+            startActivity(intent);
+
             return true;
-        } else if (id == R.id.action_cancelar) {
-            finish();
+        } else if (id == R.id.action_alterar) {
+            Intent intent = new Intent(this, EditFilme.class);
+            intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
+            startActivity(intent);
+
+            return true;
+        } else if (id == R.id.action_eliminar) {
+            Intent intent = new Intent(this, DelFilme.class);
+            intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
+            startActivity(intent);
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Instantiate and return a new Loader for the given ID.
-     *
-     * <p>This will always be called from the process's main thread.
-     *
-     * @param id   The ID whose loader is to be created.
-     * @param args Any arguments supplied by the caller.
-     * @return Return a new Loader instance that is ready to start loading.
-     */
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, RateItContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_GENERO
+        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, RateItContentProvider.ENDERECO_FILMES, BdTableFilmes.TODAS_COLUNAS, null, null, BdTableFilmes.CAMPO_NOME
         );
 
         return cursorLoader;
@@ -269,7 +174,7 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        mostraCategoriasSpinner(data);
+        adaptadorFilmes.setCursor(data);
     }
 
     /**
@@ -283,6 +188,6 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        mostraCategoriasSpinner(null);
+        adaptadorFilmes.setCursor(null);
     }
 }

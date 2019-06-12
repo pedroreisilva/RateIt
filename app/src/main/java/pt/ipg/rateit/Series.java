@@ -12,6 +12,11 @@ public class Series {
     private int episodio;
     private String data;
     private long category;
+    private String nomeCategoria; // Campo "externo"
+
+    public String getNomeCategoria() {
+        return nomeCategoria;
+    }
 
     public long getId() {
         return id;

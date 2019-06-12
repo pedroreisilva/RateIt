@@ -1,51 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFilme">
-
-    <Button
-        android:id="@+id/buttonInsFilme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margem_esp"
-        android:layout_marginLeft="@dimen/margem_esp"
-        android:layout_marginBottom="@dimen/margem_esp"
-        android:text="@string/addfilme"
-        android:onClick="guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margem_esp"
-        android:layout_marginRight="@dimen/margem_esp"
-        android:layout_marginBottom="@dimen/margem_esp"
-        android:text="@string/cancel"
-        android:onClick="finish"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    android:orientation="vertical"
+    tools:context=".AddFilme"
+    tools:showIn="@layout/activity_add_filme">>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginRight="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNomeFilme"
+            android:id="@+id/editTextNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nome_filme" />
@@ -53,60 +27,60 @@
 
 
     <Spinner
-        android:id="@+id/spinnercat"
-        android:layout_width="0dp"
+        android:id="@+id/spinnerCategorias"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        android:layout_marginRight="8dp" />
 
-    <Button
-        android:id="@+id/buttonData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/data_de_visualização"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnernotas" />
-
-    <TextView
-        android:id="@+id/textViewData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonData"
-        tools:text="Data" />
 
     <Spinner
-        android:id="@+id/spinnernotas"
-        android:layout_width="0dp"
+        android:id="@+id/spinnerNota"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnercat" />
+        android:layout_marginRight="8dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Spinner
+        android:id="@+id/spinnerMes"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:entries="@array/mes" />
+
+    <Spinner
+        android:id="@+id/spinnerAno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:entries="@array/ano" />
+
+    <Spinner
+        android:id="@+id/spinnerDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:entries="@array/dia" />
+
+    <TextView
+        android:id="@+id/textViewRelease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Data"
+        android:textSize="18sp" />
+
+</LinearLayout>
