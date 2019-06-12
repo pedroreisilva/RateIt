@@ -118,18 +118,20 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void guardar(){
 
-        String nome = editTextNomeFilme.getText().toString();
-
-        if (nome.trim().isEmpty()) {
-            editTextNomeFilme.setError(getString(R.string.preecha_nome));
-            return;
-        }
 
         SimpleDateFormat formatadata= new SimpleDateFormat("dd-MM-yyyy");
         Date data =  new Date();
         String dataFormatada =  formatadata.format(data);
 
         textViewData.setText(dataFormatada);
+
+        String nome = editTextNomeFilme.getText().toString();
+        if (nome.trim().isEmpty()) {
+            editTextNomeFilme.setError(getString(R.string.preecha_nome));
+        }else {
+            Toast.makeText(AddFilme.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
         long idNota = spinnerNota.getSelectedItemId();
         long idCategoria = spinnerCategorias.getSelectedItemId();
@@ -158,14 +160,7 @@ public class AddFilme extends AppCompatActivity implements AdapterView.OnItemSel
             e.printStackTrace();
         }
     }
-
-
-    public void finish(View view) {
-        finish();
-        Toast.makeText(this, (getString(R.string.finish)), Toast.LENGTH_SHORT).show();
-    }
-
-
+    
 
     @Override
     protected void onResume() {
