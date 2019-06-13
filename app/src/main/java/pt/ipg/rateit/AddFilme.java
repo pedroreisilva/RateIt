@@ -55,13 +55,6 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
     }
 
-    @Override
-    protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_FILMES, null, this);
-
-        super.onResume();
-    }
-
     private void mostraCategoriasSpinner(Cursor cursorCategorias) {
         SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
                 this,
@@ -72,7 +65,6 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         );
         spinnerCategorias.setAdapter(adaptadorCategorias);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

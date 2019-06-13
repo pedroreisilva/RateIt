@@ -148,7 +148,7 @@ public class AdaptadorSeries extends RecyclerView.Adapter<AdaptadorSeries.ViewHo
 
             viewHolderSeriesSelecionada = this;
 
-            ((MainFilmes) context).atualizaOpcoesMenu();
+            ((MainSeries) context).atualizaOpcoesMenu();
 
             seleciona();
         }

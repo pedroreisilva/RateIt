@@ -37,23 +37,7 @@ public class EditSerie extends AppCompatActivity implements AdapterView.OnItemSe
             }
         });
 
-        Button buttonSaveSerie = findViewById(R.id.buttonSaveSerie);
-        buttonSaveSerie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText editTextSerieName = findViewById(R.id.editTextNomeSerie);
-                String mensagem = editTextSerieName.getText().toString();
 
-                if (mensagem.trim().length() == 0) {
-                    editTextSerieName.setError(getString(R.string.nome_obrigatoria));
-                }else if (!mensagem.matches("[a-zA-Z ]+")){
-                    editTextSerieName.setError(getString(R.string.characters));
-                }else {
-                    finish();
-                    Toast.makeText(EditSerie.this, getString(R.string.serie_atualizada), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
         Spinner spinnercat = findViewById(R.id.spinnercat);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
