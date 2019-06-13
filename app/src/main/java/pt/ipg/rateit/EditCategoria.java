@@ -22,21 +22,5 @@ public class EditCategoria extends AppCompatActivity {
                 finish();
             }
         });
-
-        Button buttonSaveFilme = findViewById(R.id.buttonSaveCategoria);
-        buttonSaveFilme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText editTextCategoriaName = findViewById(R.id.editTextNomeCategoria);
-                String mensagem = editTextCategoriaName.getText().toString();
-
-                if (mensagem.trim().length() == 0) {
-                    editTextCategoriaName.setError(getString(R.string.nome_obrigatoria));
-                }else {
-                    finish();
-                    Toast.makeText(EditCategoria.this, getString(R.string.categoria_atualizado), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 }

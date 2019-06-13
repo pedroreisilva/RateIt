@@ -67,10 +67,14 @@
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
     <string name="erro_guardar_filme">Erro: Não foi possível guardar o filme</string>
+    <string name="erro_guardar_serie">Erro: Não foi possível guardar o série</string>
     <string name="preecha_nome">Preencha o nome</string>
     <string name="nome_dos_filmes">Nome dos Filmes:</string>
     <string name="todas_as_categorias">All categories:</string>
     <string name="Erro">Erro</string>
+    <string name="formato_data">dd/mm/yyyy</string>
+    <string name="temporada">Temporada</string>
+    <string name="episodio">Episódio</string>
 
     <string-array name="categorias">
         <item>Ação</item>

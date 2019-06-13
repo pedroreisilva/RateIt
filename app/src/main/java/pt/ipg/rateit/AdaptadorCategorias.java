@@ -110,7 +110,7 @@ public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategoria
         public ViewHolderCategoria(@NonNull View itemView) {
             super(itemView);
 
-            textViewCategoria = (TextView)itemView.findViewById(R.id.textViewItemCategoria);
+            textViewCategoria = (TextView)itemView.findViewById(R.id.textViewNomeCategoria);
 
             itemView.setOnClickListener(this);
         }

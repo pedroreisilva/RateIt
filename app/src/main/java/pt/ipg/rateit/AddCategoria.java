@@ -11,8 +11,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,14 +29,10 @@ public class AddCategoria extends AppCompatActivity implements LoaderManager.Loa
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         editTextNomeCategoria = (EditText) findViewById(R.id.editTextNomeCategoria);
 
-
-
-
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -68,23 +62,22 @@ public class AddCategoria extends AppCompatActivity implements LoaderManager.Loa
 
     private void guardar(){
 
-        String nomecategoria = editTextNomeCategoria.getText().toString();
-        if (nomecategoria.trim().length() == 0){
-            editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
-        }else if (nomecategoria.length() <= 3){
-            editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
-        }else if(nomecategoria.length() >= 25){
-            editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
-        }else {
-            Toast.makeText(AddCategoria.this, getString(R.string.categoria_adicionado), Toast.LENGTH_SHORT).show();
-            finish();
-        }
+        String NomeCategoria = editTextNomeCategoria.getText().toString();
 
+        if (NomeCategoria.trim().length() == 0) {
+            editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
+            editTextNomeCategoria.requestFocus();
+        } else
+            editTextNomeCategoria.setError(null);
+
+        if (NomeCategoria.trim().length() != 0) {
+            finish();
+            Toast.makeText(this, getString(R.string.categoria_adicionado), Toast.LENGTH_LONG).show();
+        }
 
         Categorias categoria = new Categorias();
 
-        categoria.setGenero(nomecategoria);
-
+        categoria.setGenero(NomeCategoria);
 
         try {
             getContentResolver().insert(RateItContentProvider.ENDERECO_CATEGORIAS, categoria.getContentValues());
@@ -94,7 +87,7 @@ public class AddCategoria extends AppCompatActivity implements LoaderManager.Loa
         } catch (Exception e) {
             Snackbar.make(
                     editTextNomeCategoria,
-                    getString(R.string.Erro),
+                    "Erro a guardar a categoria",
                     Snackbar.LENGTH_LONG)
                     .show();
 
