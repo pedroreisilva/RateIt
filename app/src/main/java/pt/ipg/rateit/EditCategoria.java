@@ -136,7 +136,7 @@ public class EditCategoria extends AppCompatActivity implements LoaderManager.Lo
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        
+
     }
 
 
