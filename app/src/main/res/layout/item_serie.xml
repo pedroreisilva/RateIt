@@ -35,7 +35,7 @@
         tools:text="10" />
 
     <TextView
-        android:id="@+id/textViewEpisódio"
+        android:id="@+id/textViewEpisodio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -53,10 +53,12 @@
         android:id="@+id/textViewCategoria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="@+id/textViewNome"
-        app:layout_constraintStart_toStartOf="@+id/textViewNome"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNome"
         tools:text="Ficção" />
 </androidx.constraintlayout.widget.ConstraintLayout>

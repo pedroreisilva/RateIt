@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
-
 import android.content.Context;
 import android.content.CursorLoader;
 import android.database.Cursor;
@@ -18,9 +17,13 @@ import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -29,6 +32,7 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
     private EditText editTextNome;
     private Spinner spinnerCategorias;
     private EditText editTextNota;
+    private EditText editTextData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +41,18 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         editTextNome = (EditText) findViewById(R.id.editTextNome);
         spinnerCategorias = (Spinner) findViewById(R.id.spinnerCategorias);
         editTextNota = (EditText) findViewById(R.id.editTextNota);
+        editTextData = (EditText) findViewById(R.id.editTextData);
+
+        SimpleDateFormat formatoData= new SimpleDateFormat("dd/MM/yyyy");
+        Date data =  new Date();
+        String dataFormatada =  formatoData.format(data);
+        editTextData.setText(dataFormatada);
+
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
-    }
-
-    @Override
-    protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_FILMES, null, this);
-
-        super.onResume();
     }
 
     private void mostraCategoriasSpinner(Cursor cursorCategorias) {
@@ -94,13 +96,16 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
 
     private void guardar() {
 
+        SimpleDateFormat formatoData= new SimpleDateFormat("dd/MM/yyyy");
+        Date data =  new Date();
+        String dataFormatada =  formatoData.format(data);
+        editTextData.setText(dataFormatada);
+
         String nome = editTextNome.getText().toString();
-        if (editTextNome.length() == 0){
+        if (nome.trim().length() == 0){
             editTextNome.setError(getString(R.string.nome_obrigatoria));
-        }else if (editTextNome.length() <= 3){
-            editTextNome.setError(getString(R.string.nome_obrigatoria));
-        }else if(editTextNome.length() >= 25){
-            editTextNome.setError(getString(R.string.nome_obrigatoria));
+        }else if(nome.trim().length() >= 25){
+            editTextNome.setError("Nome demasiado grande!");
         }else {
             Toast.makeText(AddFilme.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
             finish();
@@ -111,25 +116,27 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         String strNota = editTextNota.getText().toString();
 
         if (strNota.trim().isEmpty()) {
-            editTextNota.setError(getString(R.string.preecha_nome));
+            editTextNota.setError("Introduza uma nota!");
             return;
         }
 
         try {
             nota = Integer.parseInt(strNota);
         } catch (NumberFormatException e) {
-            editTextNota.setError(getString(R.string.Erro));
+            editTextNota.setError("Introduza apenas números!");
             return;
         }
 
         long idCategoria = spinnerCategorias.getSelectedItemId();
 
         // guardar os dados
+
         Filmes filme = new Filmes();
 
         filme.setNome(nome);
         filme.setCategory(idCategoria);
         filme.setNota(nota);
+        filme.setData(dataFormatada);
 
 
         try {

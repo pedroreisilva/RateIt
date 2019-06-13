@@ -4,29 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditCategoria">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".EditCategoria"
+    tools:showIn="@layout/activity_edit_categoria">
 
-    <Button
-        android:id="@+id/buttonSaveCategoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margem_esp"
-        android:layout_marginLeft="@dimen/margem_esp"
-        android:layout_marginBottom="@dimen/margem_esp"
-        android:text="@string/savecategoria"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margem_esp"
-        android:layout_marginRight="@dimen/margem_esp"
-        android:layout_marginBottom="@dimen/margem_esp"
-        android:text="@string/cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
