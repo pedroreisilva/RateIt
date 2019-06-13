@@ -108,6 +108,8 @@ public class AdaptadorSeries extends RecyclerView.Adapter<AdaptadorSeries.ViewHo
         private TextView textViewNome;
         private TextView textViewCategoria;
         private TextView textViewNota;
+        private TextView textViewTemporada;
+        private TextView textViewEpisodio;
         private TextView textViewData;
 
         private Series serie;
@@ -118,6 +120,8 @@ public class AdaptadorSeries extends RecyclerView.Adapter<AdaptadorSeries.ViewHo
             textViewNome = (TextView)itemView.findViewById(R.id.textViewNome);
             textViewCategoria =  (TextView)itemView.findViewById(R.id.textViewCategoria);
             textViewNota =  (TextView)itemView.findViewById(R.id.textViewNota);
+            textViewTemporada =  (TextView)itemView.findViewById(R.id.textViewTemporada);
+            textViewEpisodio =  (TextView)itemView.findViewById(R.id.textViewEpisodio);
             textViewData =  (TextView)itemView.findViewById(R.id.textViewData);
 
             itemView.setOnClickListener(this);
@@ -130,6 +134,8 @@ public class AdaptadorSeries extends RecyclerView.Adapter<AdaptadorSeries.ViewHo
             textViewNome.setText(serie.getNome());
             textViewCategoria.setText(serie.getNomeCategoria());
             textViewNota.setText(String.valueOf(serie.getNota()));
+            textViewTemporada.setText(String.valueOf(serie.getTemporada()));
+            textViewEpisodio.setText(String.valueOf(serie.getEpisodio()));
             textViewData.setText(String.valueOf(serie.getData()));
 
         }

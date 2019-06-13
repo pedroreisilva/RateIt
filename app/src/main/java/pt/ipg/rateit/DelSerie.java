@@ -23,15 +23,7 @@ public class DelSerie extends AppCompatActivity {
             }
         });
 
-        Button buttonDelSerie = findViewById(R.id.buttonDelSerie);
-        buttonDelSerie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                finish();
-                Toast.makeText(DelSerie.this,getString(R.string.serie_eliminado),Toast.LENGTH_SHORT).show();
 
-            }
-        });
     }
 }

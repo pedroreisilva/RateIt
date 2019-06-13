@@ -139,8 +139,6 @@ public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderC
         if (strTemporada.trim().isEmpty()) {
             editTextTemporada.setError("Introduza um número!");
             return;
-        }else if(temporada > 10) {
-
         }
 
         try {
