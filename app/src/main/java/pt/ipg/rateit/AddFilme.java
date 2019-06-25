@@ -27,7 +27,7 @@ import java.util.Date;
 
 public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int ID_CURSO_LOADER_FILMES = 0;
+    private static final int ID_CURSO_LOADER_FILME = 0;
 
     private EditText editTextNome;
     private Spinner spinnerCategorias;
@@ -52,7 +52,7 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         editTextData.setText(dataFormatada);
 
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILME, null, this);
     }
 
     private void mostraCategoriasSpinner(Cursor cursorCategorias) {
@@ -102,18 +102,24 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         editTextData.setText(dataFormatada);
 
         String nome = editTextNome.getText().toString();
+        int nota;
+        String strNota = editTextNota.getText().toString();
+
+
         if (nome.trim().length() == 0){
             editTextNome.setError(getString(R.string.nome_obrigatoria));
-        }else if(nome.trim().length() >= 25){
+            editTextNome.requestFocus();
+        }else if(nome.trim().length() >= 25) {
             editTextNome.setError("Nome demasiado grande!");
+            editTextNome.requestFocus();
+        }else if (strNota.trim().isEmpty()) {
+            editTextNota.setError("Introduza uma nota!");
+            editTextNota.requestFocus();
         }else {
             Toast.makeText(AddFilme.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        int nota;
-
-        String strNota = editTextNota.getText().toString();
 
         if (strNota.trim().isEmpty()) {
             editTextNota.setError("Introduza uma nota!");
@@ -127,6 +133,7 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
             return;
         }
 
+
         long idCategoria = spinnerCategorias.getSelectedItemId();
 
         // guardar os dados
@@ -134,7 +141,7 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         Filmes filme = new Filmes();
 
         filme.setNome(nome);
-        filme.setCategory(idCategoria);
+        filme.setCategoria(idCategoria);
         filme.setNota(nota);
         filme.setData(dataFormatada);
 

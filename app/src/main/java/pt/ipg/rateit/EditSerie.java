@@ -19,58 +19,11 @@ import java.util.Calendar;
 public class EditSerie extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
-    TextView mTextView;
-    Button mButton;
-    Calendar c;
-    DatePickerDialog dpd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_edit_serie);
-
-        Button buttonCancel = findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-
-        Spinner spinnercat = findViewById(R.id.spinnercat);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnercat.setAdapter(adapter);
-        spinnercat.setOnItemSelectedListener(this);
-
-        Spinner spinnernota = findViewById(R.id.spinnernotas);
-        ArrayAdapter<CharSequence> adapters = ArrayAdapter.createFromResource(this, R.array.notas, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnernota.setAdapter(adapters);
-        spinnernota.setOnItemSelectedListener(this);
-
-        mTextView = (TextView) findViewById(R.id.textViewData);
-        mButton = (Button) findViewById(R.id.buttonData);
-
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                c = Calendar.getInstance();
-                int dia = c.get(Calendar.DAY_OF_MONTH);
-                int mes = c.get(Calendar.MONTH);
-                int ano = c.get(Calendar.YEAR);
-
-                dpd = new DatePickerDialog(EditSerie.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        mTextView.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-                    }
-                }, dia, mes, ano);
-                dpd.show();
-            }
-        });
-
 
     }
 

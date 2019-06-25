@@ -9,7 +9,7 @@ public class Filmes {
     private String nomef;
     private int nota;
     private String data;
-    private long category;
+    private long categoria;
     private String nomeCategoria; // Campo "externo"
 
     public String getNomeCategoria() {
@@ -48,12 +48,12 @@ public class Filmes {
         this.data = data;
     }
 
-    public long getCategory() {
-        return category;
+    public long getCategoria() {
+        return categoria;
     }
 
-    public void setCategory(long Category) {
-        this.category = Category;
+    public void setCategoria(long Category) {
+        this.categoria = Category;
     }
 
     public ContentValues getContentValues() {
@@ -61,7 +61,7 @@ public class Filmes {
         ContentValues valores = new ContentValues();
 
         valores.put(BdTableFilmes.CAMPO_NOME, nomef);
-        valores.put(BdTableFilmes.CAMPO_CATEGORIA, category);
+        valores.put(BdTableFilmes.CAMPO_CATEGORIA, categoria);
         valores.put(BdTableFilmes.CAMPO_NOTA, nota);
         valores.put(BdTableFilmes.CAMPO_DATA_VISUALIZACAO, data);
 
@@ -99,7 +99,7 @@ public class Filmes {
         filme.setId(id);
         filme.setNome(nomef);
         filme.setNota(nota);
-        filme.setCategory(categoria);
+        filme.setCategoria(categoria);
         filme.setData(data);
         filme.nomeCategoria = nomeCategoria;
 

@@ -30,9 +30,11 @@ public class DelFilme extends AppCompatActivity {
         TextView textViewData = (TextView) findViewById(R.id.textViewData);
 
         Intent intent = getIntent();
+
         long idFilme = intent.getLongExtra(MainFilmes.ID_FILME, -1);
+
         if (idFilme == -1) {
-            Toast.makeText(this, "Erro: não foi possível apagar o filme", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, ("Erro a eliminar o filme!"), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -42,7 +44,7 @@ public class DelFilme extends AppCompatActivity {
         Cursor cursor = getContentResolver().query(enderecoFilmeApagar, BdTableFilmes.TODAS_COLUNAS, null, null, null);
 
         if (!cursor.moveToNext()) {
-            Toast.makeText(this, "Erro: não foi possível apagar o filme", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, ("Erro a eliminar o filme!"), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -52,7 +54,7 @@ public class DelFilme extends AppCompatActivity {
         textViewNome.setText(filme.getNome());
         textViewCategoria.setText(filme.getNomeCategoria());
         textViewNota.setText(String.valueOf(filme.getNota()));
-        textViewData.setText(filme.getNomeCategoria());
+        textViewData.setText(filme.getData());
     }
 
     @Override

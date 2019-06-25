@@ -96,6 +96,7 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
         } else if (id == R.id.action_eliminar) {
             Intent intent = new Intent(this, DelFilme.class);
             intent.putExtra(ID_FILME, adaptadorFilmes.getFilmeSelecionado().getId());
+
             startActivity(intent);
 
             return true;

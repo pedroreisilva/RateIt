@@ -9,8 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +25,7 @@ public class DelCategoria extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView textViewCategoria = (TextView) findViewById(R.id.textViewDelCategoria);
+        TextView textViewCategoria = (TextView) findViewById(R.id.textViewCategoria);
 
         Intent intent = getIntent();
         long idCategoria = intent.getLongExtra(MainCategorias.ID_CATEGORIA, -1);

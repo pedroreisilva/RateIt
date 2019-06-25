@@ -24,12 +24,12 @@ public class DelSerie extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView textViewNome = (TextView) findViewById(R.id.textViewDelNome);
-        TextView textViewCategoria = (TextView) findViewById(R.id.textViewDelCategoria);
-        TextView textViewNota = (TextView) findViewById(R.id.textViewDelNota);
+        TextView textViewNome = (TextView) findViewById(R.id.textViewNome);
+        TextView textViewCategoria = (TextView) findViewById(R.id.textViewCategoria);
+        TextView textViewNota = (TextView) findViewById(R.id.textViewNota);
         TextView textViewTemporada = (TextView) findViewById(R.id.textViewDelTemporada);
         TextView textViewEpisodio = (TextView) findViewById(R.id.textViewDelEpisodio);
-        TextView textViewData = (TextView) findViewById(R.id.textViewDelData);
+        TextView textViewData = (TextView) findViewById(R.id.textViewData);
 
         Intent intent = getIntent();
         long idSerie = intent.getLongExtra(MainSeries.ID_SERIE, -1);

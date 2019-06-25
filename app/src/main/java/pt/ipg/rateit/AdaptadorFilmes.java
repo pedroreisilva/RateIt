@@ -83,8 +83,8 @@ public class AdaptadorFilmes extends RecyclerView.Adapter<AdaptadorFilmes.ViewHo
 
             textViewNome.setText(filme.getNome());
             textViewCategoria.setText(filme.getNomeCategoria());
-            textViewNota.setText(filme.getNota());
-            textViewData.setText(String.valueOf(filme.getData()));
+            textViewNota.setText(String.valueOf(filme.getNota()));
+            textViewData.setText(filme.getData());
 
         }
 

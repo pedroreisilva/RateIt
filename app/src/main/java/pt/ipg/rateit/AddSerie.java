@@ -172,7 +172,7 @@ public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderC
         Series serie = new Series();
 
         serie.setNome(nome);
-        serie.setCategory(idCategoria);
+        serie.setCategoria(idCategoria);
         serie.setNota(nota);
         serie.setTemporada(temporada);
         serie.setEpisodio(episodio);

@@ -11,7 +11,7 @@ public class Series {
     private int temporada;
     private int episodio;
     private String data;
-    private long category;
+    private long categoria;
     private String nomeCategoria; // Campo "externo"
 
     public String getNomeCategoria() {
@@ -66,12 +66,12 @@ public class Series {
         this.data = data;
     }
 
-    public long getCategory() {
-        return category;
+    public long getCategoria() {
+        return categoria;
     }
 
-    public void setCategory(long Category) {
-        this.category = Category;
+    public void setCategoria(long Category) {
+        this.categoria = Category;
     }
 
     public ContentValues getContentValues() {
@@ -79,7 +79,7 @@ public class Series {
         ContentValues valores = new ContentValues();
 
         valores.put(BdTableSeries.CAMPO_NOME, nome);
-        valores.put(BdTableSeries.CAMPO_CATEGORIA, category);
+        valores.put(BdTableSeries.CAMPO_CATEGORIA, categoria);
         valores.put(BdTableSeries.CAMPO_NOTA, nota);
         valores.put(BdTableSeries.CAMPO_TEMPORADA, temporada);
         valores.put(BdTableSeries.CAMPO_EPISODIO, episodio);
@@ -117,6 +117,10 @@ public class Series {
                 cursor.getColumnIndex(BdTableSeries.CAMPO_DATA_VISUALIZACAO)
         );
 
+        String nomeCategoria = cursor.getString(
+                cursor.getColumnIndex(BdTableFilmes.ALIAS_NOME_CATEGORIA)
+        );
+
         Series serie = new Series();
 
         serie.setId(id);
@@ -124,8 +128,9 @@ public class Series {
         serie.setNota(nota);
         serie.setTemporada(temporada);
         serie.setEpisodio(episodio);
-        serie.setCategory(categoria);
+        serie.setCategoria(categoria);
         serie.setData(data);
+        serie.nomeCategoria = nomeCategoria;
 
         return serie;
     }

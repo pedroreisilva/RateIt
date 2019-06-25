@@ -72,7 +72,6 @@ public class MainCategorias extends AppCompatActivity implements LoaderManager.L
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_inserir) {
@@ -83,9 +82,7 @@ public class MainCategorias extends AppCompatActivity implements LoaderManager.L
         } else if (id == R.id.action_alterar) {
             Intent intent = new Intent(this, EditCategoria.class);
             intent.putExtra(ID_CATEGORIA, adaptadorCategorias.getCategoriaSelecionado().getId());
-
             startActivity(intent);
-
             return true;
         } else if (id == R.id.action_eliminar) {
             Intent intent = new Intent(this, DelCategoria.class);
