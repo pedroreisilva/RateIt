@@ -67,12 +67,14 @@ public class AddCategoria extends AppCompatActivity implements LoaderManager.Loa
         if (NomeCategoria.trim().length() == 0) {
             editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
             editTextNomeCategoria.requestFocus();
-        } else
-            editTextNomeCategoria.setError(null);
-
-        if (NomeCategoria.trim().length() != 0) {
+            return;
+        }else if(NomeCategoria.trim().length() >= 25){
+            editTextNomeCategoria.setError("Nome demasiado grande!");
+            editTextNomeCategoria.requestFocus();
+            return;
+        }else {
+            Toast.makeText(AddCategoria.this, getString(R.string.categoria_adicionado), Toast.LENGTH_SHORT).show();
             finish();
-            Toast.makeText(this, getString(R.string.categoria_adicionado), Toast.LENGTH_LONG).show();
         }
 
         Categorias categoria = new Categorias();
@@ -93,10 +95,6 @@ public class AddCategoria extends AppCompatActivity implements LoaderManager.Loa
 
             e.printStackTrace();
         }
-
-
-
-
 
     }
 

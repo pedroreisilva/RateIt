@@ -104,6 +104,7 @@ public class EditCategoria extends AppCompatActivity implements LoaderManager.Lo
         if (NewName.trim().length() == 0) {
             editTextNomeCategoria.setError(getString(R.string.nome_obrigatoria));
             editTextNomeCategoria.requestFocus();
+            return;
         } else {
             finish();
             Toast.makeText(EditCategoria.this, getString(R.string.categoria_atualizado), Toast.LENGTH_SHORT).show();
