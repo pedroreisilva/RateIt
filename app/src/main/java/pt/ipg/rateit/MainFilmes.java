@@ -25,11 +25,12 @@ import android.widget.Toast;
 
 public class MainFilmes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int ID_CURSO_LOADER_FILMES = 0;
     public static final String ID_FILME = "ID_FILME";
 
+    private static final int ID_CURSO_LOADER_FILMES = 0;
     private RecyclerView recyclerViewFilmes;
     private AdaptadorFilmes adaptadorFilmes;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,12 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
         setSupportActionBar(toolbar);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FILMES, null, this);
-
         recyclerViewFilmes = (RecyclerView) findViewById(R.id.RecyclerViewFilmes);
         adaptadorFilmes = new AdaptadorFilmes(this);
         recyclerViewFilmes.setAdapter(adaptadorFilmes);
         recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
 
@@ -53,8 +55,6 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
 
         super.onResume();
     }
-
-    private Menu menu;
 
     public void atualizaOpcoesMenu() {
         Filmes filme = adaptadorFilmes.getFilmeSelecionado();
@@ -80,9 +80,7 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_inserir) {
+        if (id == R.id.action_inserir) {
             Intent intent = new Intent(this, AddFilme.class);
             startActivity(intent);
 

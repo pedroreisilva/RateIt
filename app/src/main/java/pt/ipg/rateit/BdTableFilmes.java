@@ -10,7 +10,8 @@ import android.util.Log;
 public class BdTableFilmes implements BaseColumns {
     public static final String NOME_TABELA = "Filmes";
 
-    public static final String ALIAS_NOME_CATEGORIA = "nome_categ";
+    public static final String ALIAS_NOME_CATEGORIA = "id_categoria";
+
     public static final String CAMPO_NOME = "Nome";
     public static final String CAMPO_CATEGORIA = "Categoria";
     public static final String CAMPO_NOTA = "Nota";
