@@ -8,10 +8,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 public class BdTableSeries implements BaseColumns {
-
-
-    public static final String ALIAS_NOME_CATEGORIA = "nome_categ";
     public static final String NOME_TABELA = "Séries";
+
+    public static final String ALIAS_NOME_CATEGORIA = "id_categoria";
+
     public static final String CAMPO_NOME = "Nome";
     public static final String CAMPO_CATEGORIA = "Categoria";
     public static final String CAMPO_NOTA = "Nota";
@@ -38,7 +38,7 @@ public class BdTableSeries implements BaseColumns {
                         CAMPO_NOTA + " INTEGER NOT NULL," +
                         CAMPO_TEMPORADA + " INTEGER NOT NULL," +
                         CAMPO_EPISODIO + " INTEGER NOT NULL," +
-                        CAMPO_DATA_VISUALIZACAO + " DATE NOT NULL," +
+                        CAMPO_DATA_VISUALIZACAO + " TEXT NOT NULL," +
                         "FOREIGN KEY (" + CAMPO_CATEGORIA + ") REFERENCES " + BdTableCategorias.NOME_TABELA + "(" + BdTableCategorias._ID + ")" +
                         ")"
         );
@@ -72,3 +72,4 @@ public class BdTableSeries implements BaseColumns {
         return db.delete(NOME_TABELA, whereClause, whereArgs);
     }
 }
+
