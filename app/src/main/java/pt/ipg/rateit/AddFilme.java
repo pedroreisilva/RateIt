@@ -102,8 +102,8 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
         editTextData.setText(dataFormatada);
 
         String nome = editTextNome.getText().toString();
-        int nota;
         String strNota = editTextNota.getText().toString();
+        int nota;
 
 
         if (nome.trim().length() == 0){

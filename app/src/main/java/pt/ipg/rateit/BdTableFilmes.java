@@ -50,7 +50,7 @@ public class BdTableFilmes implements BaseColumns {
             sql += " AND " + selection;
         }
 
-        Log.d("Tabela Livros", "query: " + sql);
+        Log.d("Tabela Filmes", "query: " + sql);
 
         return db.rawQuery(sql, selectionArgs);
 

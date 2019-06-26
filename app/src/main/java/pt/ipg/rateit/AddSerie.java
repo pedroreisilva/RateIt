@@ -27,7 +27,7 @@ import java.util.Date;
 
 public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int ID_CURSO_LOADER_SERIES = 0;
+    private static final int ID_CURSO_LOADER_SERIE = 0;
 
     private EditText editTextNome;
     private Spinner spinnerCategorias;
@@ -56,7 +56,7 @@ public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderC
         editTextData.setText(dataFormatada);
 
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_SERIES, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_SERIE, null, this);
     }
 
     private void mostraCategoriasSpinner(Cursor cursorCategorias) {
@@ -100,24 +100,35 @@ public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderC
 
     private void guardar() {
 
+
         SimpleDateFormat formatoData= new SimpleDateFormat("dd/MM/yyyy");
         Date data =  new Date();
         String dataFormatada =  formatoData.format(data);
         editTextData.setText(dataFormatada);
 
         String nome = editTextNome.getText().toString();
+        String strTemporada = editTextNome.getText().toString();
+        String strEpisodio = editTextNome.getText().toString();
+        String strNota = editTextNota.getText().toString();
+        int nota;
+        int temporada;
+        int episodio;
+
+
         if (nome.trim().length() == 0){
             editTextNome.setError(getString(R.string.nome_obrigatoria));
-        }else if(nome.trim().length() >= 25){
+            editTextNome.requestFocus();
+        }else if(nome.trim().length() >= 25) {
             editTextNome.setError("Nome demasiado grande!");
+            editTextNome.requestFocus();
+        }else if (strNota.trim().isEmpty()) {
+            editTextNota.setError("Introduza uma nota!");
+            editTextNota.requestFocus();
         }else {
             Toast.makeText(AddSerie.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        int nota;
-
-        String strNota = editTextNota.getText().toString();
 
         if (strNota.trim().isEmpty()) {
             editTextNota.setError("Introduza uma nota!");
@@ -132,38 +143,30 @@ public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderC
         }
 
 
-        int temporada;
-
-        String strTemporada = editTextTemporada.getText().toString();
-
         if (strTemporada.trim().isEmpty()) {
-            editTextTemporada.setError("Introduza um número!");
+            editTextTemporada.setError("Introduza uma temporada!");
             return;
         }
 
         try {
-            temporada = Integer.parseInt(strTemporada);
+            temporada = Integer.parseInt(strNota);
         } catch (NumberFormatException e) {
             editTextTemporada.setError("Introduza apenas números!");
             return;
         }
 
-
-        int episodio;
-
-        String strEpisodio = editTextEpisodio.getText().toString();
-
-        if (strNota.trim().isEmpty()) {
-            editTextEpisodio.setError("Introduza o número do episódio!");
+        if (strEpisodio.trim().isEmpty()) {
+            editTextEpisodio.setError("Introduza um episódio!");
             return;
         }
 
         try {
-            episodio = Integer.parseInt(strEpisodio);
+            episodio = Integer.parseInt(strNota);
         } catch (NumberFormatException e) {
             editTextEpisodio.setError("Introduza apenas números!");
             return;
         }
+
 
         long idCategoria = spinnerCategorias.getSelectedItemId();
 

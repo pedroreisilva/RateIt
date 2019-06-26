@@ -34,8 +34,6 @@ import java.util.Date;
 public class EditFilme extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
 
-    private static final int ID_CURSO_LOADER_CATEGORIAS = 0;
-
     private EditText editTextNome;
     private Spinner spinnerCategorias;
     private EditText editTextNota;
@@ -43,8 +41,6 @@ public class EditFilme extends AppCompatActivity implements LoaderManager.Loader
 
     private  Filmes filme = null;
 
-    private boolean filmesCarregados = false;
-    private boolean filmeAtualizado = false;
 
     private Uri enderecoFilmeEditar;
 
@@ -62,8 +58,6 @@ public class EditFilme extends AppCompatActivity implements LoaderManager.Loader
         spinnerCategorias = (Spinner) findViewById(R.id.spinnerCategorias);
         editTextNota = (EditText) findViewById(R.id.editTextNota);
         editTextData = (EditText) findViewById(R.id.editTextData);
-
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
 
         Intent intent = getIntent();
 
@@ -91,30 +85,6 @@ public class EditFilme extends AppCompatActivity implements LoaderManager.Loader
         editTextNota.setText(String.valueOf(filme.getNota()));
         editTextData.setText(filme.getData());
 
-        actualizaFilmeSelecionado();
-
-
-    }
-
-    private void actualizaFilmeSelecionado() {
-        if (!filmesCarregados) return;
-        if (filmeAtualizado) return;
-
-        for (int i = 0; i < spinnerCategorias.getCount(); i++) {
-            if (spinnerCategorias.getItemIdAtPosition(i) == filme.getCategoria()) {
-                spinnerCategorias.setSelection(i);
-                break;
-            }
-        }
-
-        filmeAtualizado = true;
-    }
-
-    @Override
-    protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_CATEGORIAS, null, this);
-
-        super.onResume();
     }
 
     private void mostraCategoriasSpinner(Cursor cursorCategorias) {
@@ -164,8 +134,8 @@ public class EditFilme extends AppCompatActivity implements LoaderManager.Loader
         editTextData.setText(dataFormatada);
 
         String nome = editTextNome.getText().toString();
-        int nota;
         String strNota = editTextNota.getText().toString();
+        int nota;
 
 
         if (nome.trim().length() == 0){
@@ -225,23 +195,15 @@ public class EditFilme extends AppCompatActivity implements LoaderManager.Loader
     }
 
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, RateItContentProvider.ENDERECO_CATEGORIAS, BdTableCategorias.TODAS_COLUNAS, null, null, BdTableCategorias.CAMPO_GENERO
-        );
-
-        return cursorLoader;
+        return null;
     }
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        mostraCategoriasSpinner(data);
-        filmesCarregados = true;
-        actualizaFilmeSelecionado();
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        filmesCarregados = false;
-        filmeAtualizado = false;
-        mostraCategoriasSpinner(null);
     }
+
 }
