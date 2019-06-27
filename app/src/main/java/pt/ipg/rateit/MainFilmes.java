@@ -44,7 +44,6 @@ public class MainFilmes extends AppCompatActivity implements LoaderManager.Loade
         adaptadorFilmes = new AdaptadorFilmes(this);
         recyclerViewFilmes.setAdapter(adaptadorFilmes);
         recyclerViewFilmes.setLayoutManager(new LinearLayoutManager(this));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

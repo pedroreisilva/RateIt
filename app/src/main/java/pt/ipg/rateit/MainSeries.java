@@ -80,9 +80,7 @@ public class MainSeries extends AppCompatActivity implements LoaderManager.Loade
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_inserir) {
+        if (id == R.id.action_inserir) {
             Intent intent = new Intent(this, AddSerie.class);
             startActivity(intent);
 

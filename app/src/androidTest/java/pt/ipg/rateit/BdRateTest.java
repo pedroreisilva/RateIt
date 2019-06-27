@@ -125,7 +125,7 @@ public class BdRateTest {
         assertEquals(nomef, filme.getNome());
         assertEquals(nota, filme.getNota());
         assertEquals(data, filme.getData());
-        assertEquals(idFiccao, filme.getCategory());
+        assertEquals(idFiccao, filme.getCategoria());
 
         nomef = "Grow Up";
         nota = 10;
@@ -139,7 +139,7 @@ public class BdRateTest {
         assertEquals(nomef, filme.getNome());
         assertEquals(nota, filme.getNota());
         assertEquals(data, filme.getData());
-        assertEquals(idComedia, filme.getCategory());
+        assertEquals(idComedia, filme.getCategoria());
 
         id = criaFilme(tableFilmes, "Teste", idComedia, 10, "16/04/2019");
         cursorFilmes = getFilmes(tableFilmes);
@@ -155,7 +155,7 @@ public class BdRateTest {
         filme.setNome(nomef);
         filme.setNota(nota);
         filme.setData(data);
-        filme.setCategory(idFiccao);
+        filme.setCategoria(idFiccao);
 
         tableFilmes.update(filme.getContentValues(), BdTableFilmes._ID + "=?", new String[]{String.valueOf(id)});
 
@@ -165,7 +165,7 @@ public class BdRateTest {
         assertEquals(nomef, filme.getNome());
         assertEquals(nota, filme.getNota());
         assertEquals(data, filme.getData());
-        assertEquals(idFiccao, filme.getCategory());
+        assertEquals(idFiccao, filme.getCategoria());
 
         // Teste read/delete livros (cRuD)
         tableFilmes.delete(BdTableFilmes._ID + "=?", new String[]{String.valueOf(id)});
@@ -202,7 +202,7 @@ public class BdRateTest {
         assertEquals(data, serie.getData());
         assertEquals(temporada, serie.getTemporada());
         assertEquals(episodio, serie.getEpisodio());
-        assertEquals(idFiccao, serie.getCategory());
+        assertEquals(idFiccao, serie.getCategoria());
 
         nomef = "Chernobyl";
         nota = 10;
@@ -220,7 +220,7 @@ public class BdRateTest {
         assertEquals(data, serie.getData());
         assertEquals(temporada, serie.getTemporada());
         assertEquals(episodio, serie.getEpisodio());
-        assertEquals(idFiccao, serie.getCategory());
+        assertEquals(idFiccao, serie.getCategoria());
 
         id = criaSerie(tableSeries, "Teste", idComedia, 10, 3, 12, "15/02/2019");
         cursorSeries = getSeries(tableSeries);
@@ -240,7 +240,7 @@ public class BdRateTest {
         serie.setTemporada(temporada);
         serie.setEpisodio(episodio);
         serie.setData(data);
-        serie.setCategory(idFiccao);
+        serie.setCategoria(idFiccao);
 
         tableSeries.update(serie.getContentValues(), BdTableSeries._ID + "=?", new String[]{String.valueOf(id)});
 
@@ -252,7 +252,7 @@ public class BdRateTest {
         assertEquals(data, serie.getData());
         assertEquals(temporada, serie.getTemporada());
         assertEquals(episodio, serie.getEpisodio());
-        assertEquals(idFiccao, serie.getCategory());
+        assertEquals(idFiccao, serie.getCategoria());
 
         // Teste read/delete livros (cRuD)
         tableSeries.delete(BdTableSeries._ID + "=?", new String[]{String.valueOf(id)});
@@ -304,7 +304,7 @@ public class BdRateTest {
         filme.setNome(nome);
         filme.setNota(nota);
         filme.setData(data);
-        filme.setCategory(categoria);
+        filme.setCategoria(categoria);
 
         long id = tableFilmes.insert(filme.getContentValues());
         assertNotEquals(-1, id);
@@ -343,7 +343,7 @@ public class BdRateTest {
         serie.setData(data);
         serie.setTemporada(temporada);
         serie.setEpisodio(episodio);
-        serie.setCategory(categoria);
+        serie.setCategoria(categoria);
 
         long id = tableSeries.insert(serie.getContentValues());
         assertNotEquals(-1, id);
