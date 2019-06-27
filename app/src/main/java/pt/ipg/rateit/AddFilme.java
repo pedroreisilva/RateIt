@@ -110,10 +110,10 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
             editTextNome.setError(getString(R.string.nome_obrigatoria));
             editTextNome.requestFocus();
         }else if(nome.trim().length() >= 25) {
-            editTextNome.setError("Nome demasiado grande!");
+            editTextNome.setError(getString(R.string.nome_grande));
             editTextNome.requestFocus();
-        }else if (strNota.trim().isEmpty()) {
-            editTextNota.setError("Introduza uma nota!");
+        }else if (strNota.trim().isEmpty() | strNota.trim().length() > 2) {
+            editTextNota.setError(getString(R.string.nota_valida));
             editTextNota.requestFocus();
         }else {
             Toast.makeText(AddFilme.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
@@ -122,14 +122,14 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
 
 
         if (strNota.trim().isEmpty()) {
-            editTextNota.setError("Introduza uma nota!");
+            editTextNota.setError(getString(R.string.nota_valida));
             return;
         }
 
         try {
             nota = Integer.parseInt(strNota);
         } catch (NumberFormatException e) {
-            editTextNota.setError("Introduza apenas números!");
+            editTextNota.setError(getString(R.string.apenas_num));
             return;
         }
 
@@ -161,6 +161,8 @@ public class AddFilme extends AppCompatActivity implements LoaderManager.LoaderC
             e.printStackTrace();
         }
     }
+
+
 
     /**
      * Instantiate and return a new Loader for the given ID.

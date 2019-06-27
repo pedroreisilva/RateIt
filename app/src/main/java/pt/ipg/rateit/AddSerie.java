@@ -119,10 +119,10 @@ public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderC
             editTextNome.setError(getString(R.string.nome_obrigatoria));
             editTextNome.requestFocus();
         }else if(nome.trim().length() >= 25) {
-            editTextNome.setError("Nome demasiado grande!");
+            editTextNome.setError(getString(R.string.nome_grande));
             editTextNome.requestFocus();
-        }else if (strNota.trim().isEmpty()) {
-            editTextNota.setError("Introduza uma nota!");
+        }else if (strNota.trim().isEmpty() | strNota.trim().length() > 2) {
+            editTextNota.setError(getString(R.string.nota_valida));
             editTextNota.requestFocus();
         }else {
             Toast.makeText(AddSerie.this, getString(R.string.filme_adicionado), Toast.LENGTH_SHORT).show();
@@ -131,39 +131,39 @@ public class AddSerie extends AppCompatActivity implements LoaderManager.LoaderC
 
 
         if (strNota.trim().isEmpty()) {
-            editTextNota.setError("Introduza uma nota!");
+            editTextNota.setError(getString(R.string.nota_valida));
             return;
         }
 
         try {
             nota = Integer.parseInt(strNota);
         } catch (NumberFormatException e) {
-            editTextNota.setError("Introduza apenas números!");
+            editTextNota.setError(getString(R.string.apenas_num));
             return;
         }
 
 
         if (strTemporada.trim().isEmpty()) {
-            editTextTemporada.setError("Introduza uma temporada!");
+            editTextTemporada.setError(getString(R.string.temporada_valida));
             return;
         }
 
         try {
             temporada = Integer.parseInt(strNota);
         } catch (NumberFormatException e) {
-            editTextTemporada.setError("Introduza apenas números!");
+            editTextTemporada.setError(getString(R.string.apenas_num));
             return;
         }
 
         if (strEpisodio.trim().isEmpty()) {
-            editTextEpisodio.setError("Introduza um episódio!");
+            editTextEpisodio.setError(getString(R.string.episodio_valido));
             return;
         }
 
         try {
             episodio = Integer.parseInt(strNota);
         } catch (NumberFormatException e) {
-            editTextEpisodio.setError("Introduza apenas números!");
+            editTextEpisodio.setError(getString(R.string.apenas_num));
             return;
         }
 
